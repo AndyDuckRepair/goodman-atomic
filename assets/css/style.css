@@ -2190,3 +2190,6 @@ footer.site {
 /* Brand wordmark: both words share one baseline, emblem stays centered */
 .brand { align-items: baseline; }
 .brand .brand-logo { align-self: center; }
+
+/* Header: breathing room between phone number and Request service button */
+.head-cta { display: flex; align-items: center; gap: 22px; }
