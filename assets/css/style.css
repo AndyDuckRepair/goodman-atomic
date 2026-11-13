@@ -2255,6 +2255,7 @@ footer.site {
 
 /* Hero: start the copy and the sign closer to the header (desktop) */
 @media (min-width: 981px) {
-  .hero .wrap { padding-top: 22px; }
+  .hero { padding-top: 0; }
+  .hero .wrap { padding-top: 34px; }
   .hero .script { margin-top: 0; }
 }
