@@ -2284,7 +2284,7 @@ footer.site {
 
 /* Mobile hero: compact copy so the sign comes up sooner */
 @media (max-width: 640px) {
-  .hero h1 { font-size: clamp(1.9rem, 9.6vw, 2.6rem); }
+  .hero h1 { font-size: clamp(1.8rem, 9.1vw, 2.5rem); }
   .hero p.lead { font-size: 1rem; line-height: 1.45; margin-top: 10px; }
   .hero .chips { margin-top: 16px; gap: 7px 8px; }
   .hero .chips li { font-size: .85rem; padding: 4px 12px; }
