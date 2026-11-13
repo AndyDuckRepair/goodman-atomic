@@ -2214,3 +2214,34 @@ footer.site {
 /* Service area: the three state rows share one height and width */
 .states .state-block { width: 100%; }
 .states .state-summary { min-height: 68px; box-sizing: border-box; }
+
+/* Hero: main buttons hang under the sign as one unit */
+.sign-col { position: relative; width: min(100%, 540px); justify-self: center; margin-inline: auto; }
+.sign-col .sign { width: 100%; }
+.hero-cta.sign-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
+  position: relative;
+}
+.sign-cta .btn { width: 100%; justify-content: center; white-space: nowrap; font-size: 1.02rem; padding-inline: 10px; }
+/* two metal hangers between the sign and the buttons */
+.sign-cta::before, .sign-cta::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  width: 7px;
+  height: 34px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #5e696d, #e6ecee 45%, #7a868a);
+  border: 1.5px solid var(--navy);
+  z-index: 0;
+}
+.sign-cta::before { left: 22%; }
+.sign-cta::after { right: 22%; }
+.sign-cta .btn { position: relative; z-index: 1; }
+@media (max-width: 520px) {
+  .hero-cta.sign-cta { grid-template-columns: 1fr; }
+  .sign-cta::before, .sign-cta::after { display: none; }
+}
