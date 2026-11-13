@@ -2193,3 +2193,9 @@ footer.site {
 
 /* Header: breathing room between phone number and Request service button */
 .head-cta .head-phone { margin-right: 22px; }
+
+/* Hero: keep the sign near the top so it is visible on first screen (desktop only) */
+@media (min-width: 981px) {
+  .hero .wrap { align-items: start; }
+  .hero .sign { margin-top: 8px; }
+}
