@@ -2262,5 +2262,5 @@ footer.site {
 
 /* Hero: sign sits slightly lower than the headline (desktop) */
 @media (min-width: 981px) {
-  .hero .sign-col { margin-top: 28px; }
+  .hero .sign-col { margin-top: 56px; }
 }
