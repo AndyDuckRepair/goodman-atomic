@@ -2186,3 +2186,7 @@ footer.site {
   .state-toggle .t-show, .state-toggle .t-hide { font-size: .78rem; }
   .state-counties { font-size: .82rem; }
 }
+
+/* Brand wordmark: both words share one baseline, emblem stays centered */
+.brand { align-items: baseline; }
+.brand .brand-logo { align-self: center; }
