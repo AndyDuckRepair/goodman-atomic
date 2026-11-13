@@ -2290,3 +2290,9 @@ footer.site {
   .hero .chips li { font-size: .85rem; padding: 4px 12px; }
   .hero .wrap { gap: 22px; padding-top: 20px; }
 }
+
+/* Service cards: the whole tile is clickable when it has a link */
+.card-link::after { content: ""; position: absolute; inset: 0; z-index: 3; cursor: pointer; }
+.card:has(.card-link) { cursor: pointer; }
+.card:has(.card-link:focus-visible) { outline: 3px solid var(--red); outline-offset: 3px; }
+.card-link:focus-visible { outline: none; }
