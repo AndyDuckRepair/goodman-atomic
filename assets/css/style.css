@@ -2192,7 +2192,10 @@ footer.site {
 .brand .brand-logo { align-self: center; }
 
 /* Header: breathing room between phone number and Request service button */
-.head-cta .head-phone { margin-right: 22px; }
+@media (min-width: 981px) {
+  .head-cta { display: flex; align-items: center; gap: 22px; flex-shrink: 0; white-space: nowrap; }
+  .head-inner { gap: 1.1rem; }
+}
 
 /* Hero: keep the sign near the top so it is visible on first screen (desktop only) */
 @media (min-width: 981px) {
