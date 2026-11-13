@@ -2304,3 +2304,47 @@ body { filter: none; }
 @media (max-width: 640px) {
   .chat { inset: 0; width: 100%; height: 100dvh; max-height: none; max-width: none; border-radius: 0; z-index: 900; }
 }
+
+/* Chat terminal: tighter log, input field that reads as "type here" */
+.chat .chat-log { gap: .15rem; }
+.chat .msg { padding: .12rem .8rem; line-height: 1.3; }
+.chat .msg.me { padding: .25rem .8rem; margin-block: .25rem; }
+.chat .chat-opts { padding: .45rem 1rem .3rem; }
+.chat .chat-input-row {
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px;
+  border-top: 2px solid var(--crt);
+  background: #0b2415;
+}
+.chat input.chat-input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  background: #020a05;
+  color: var(--crt);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-family: var(--font-t);
+  font-size: 1.15rem;
+  caret-color: var(--gold);
+  box-shadow: 0 0 0 0 rgba(255,210,122,.5);
+  animation: chatInputPulse 2.2s ease-in-out infinite;
+}
+.chat input.chat-input::placeholder { color: var(--gold); opacity: .85; }
+.chat input.chat-input:focus { outline: none; border-color: var(--crt); animation: none; box-shadow: 0 0 10px rgba(125,255,160,.45); }
+@keyframes chatInputPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,210,122,.0); }
+  50%      { box-shadow: 0 0 0 4px rgba(255,210,122,.28); }
+}
+.chat .chat-send {
+  background: var(--crt);
+  color: var(--crt-bg);
+  border: 0;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.chat .chat-send:hover { background: #a6ffbf; }
