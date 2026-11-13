@@ -2259,3 +2259,8 @@ footer.site {
   .hero .wrap { padding-top: 34px; }
   .hero .script { margin-top: 0; }
 }
+
+/* Hero: sign sits slightly lower than the headline (desktop) */
+@media (min-width: 981px) {
+  .hero .sign-col { margin-top: 28px; }
+}
