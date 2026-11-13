@@ -2281,3 +2281,12 @@ footer.site {
 @media (min-width: 981px) {
   .hero h1 { font-size: clamp(2.5rem, 4.3vw, 3.5rem); }
 }
+
+/* Mobile hero: compact copy so the sign comes up sooner */
+@media (max-width: 640px) {
+  .hero h1 { font-size: clamp(1.9rem, 9.6vw, 2.6rem); }
+  .hero p.lead { font-size: 1rem; line-height: 1.45; margin-top: 10px; }
+  .hero .chips { margin-top: 16px; gap: 7px 8px; }
+  .hero .chips li { font-size: .85rem; padding: 4px 12px; }
+  .hero .wrap { gap: 22px; padding-top: 20px; }
+}
