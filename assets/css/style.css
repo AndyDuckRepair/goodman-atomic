@@ -2275,3 +2275,9 @@ footer.site {
   .hero { padding-top: 0; }
   .hero .wrap { padding-top: 26px; }
 }
+
+/* Hero headline: cream part on the first line, gold part on the second */
+.hero h1 em { display: block; }
+@media (min-width: 981px) {
+  .hero h1 { font-size: clamp(2.5rem, 4.3vw, 3.5rem); }
+}
