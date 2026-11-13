@@ -2348,3 +2348,13 @@ body { filter: none; }
   font-weight: 700;
 }
 .chat .chat-send:hover { background: #a6ffbf; }
+
+/* Service icons: painted retro badges instead of line icons */
+.card .ico.ico-img { width: 96px; height: 96px; background: none; border: 0; border-radius: 0; margin-bottom: .9rem; }
+.card .ico.ico-img img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 3px 0 rgba(22,48,78,.35)); transition: transform .2s; }
+.card:hover .ico.ico-img img { transform: rotate(-6deg) scale(1.06); }
+.inner-icon.inner-icon-img { width: 200px; height: 200px; background: none; border: 0; box-shadow: none; }
+.inner-icon.inner-icon-img img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 6px 0 rgba(0,0,0,.25)); }
+@media (max-width: 640px) {
+  .inner-icon.inner-icon-img { width: 150px; height: 150px; }
+}
