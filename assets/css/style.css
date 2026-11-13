@@ -2358,3 +2358,7 @@ body { filter: none; }
 @media (max-width: 640px) {
   .inner-icon.inner-icon-img { width: 150px; height: 150px; }
 }
+
+/* Service pages: buttons sit evenly between the intro text and the chips */
+.hero-inner .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+.hero-inner .hero-btns + .chips { margin-top: 26px; }
