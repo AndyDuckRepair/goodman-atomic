@@ -280,6 +280,37 @@ header.site {
   width: auto;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.brand .g {
+  font-family: var(--font-s);
+  font-size: 2rem;
+  color: var(--navy);
+}
+.brand .a {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  color: var(--red);
+  text-transform: uppercase;
+  font-style: italic;
+}
+.brand-logo {
+  height: 48px;
+  width: 48px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+/* Footer brand variant */
+.brand-foot .g { color: var(--cream); }
+.brand-foot .a { color: var(--gold); }
+.brand-logo-foot { height: 56px; width: 56px; }
+
 .head-phone {
   font-family: var(--font-d);
   font-size: 1.3rem;
@@ -816,18 +847,11 @@ nav.main .drop-toggle[aria-expanded="true"] {
 
 
 /* ─── 9. SIGN COLUMN ─────────────────────────────────────────── */
-.sign-col {
+.sign {
   position: relative;
   justify-self: center;
   width: min(100%, 540px);
 }
-
-/* Shared sway container: sign + dispatch panel move together */
-.sign-sway-wrap {
-  animation: sway 7s ease-in-out infinite;
-}
-
-.sign { position: relative; }
 
 .sign img {
   border-radius: 18px;
@@ -835,6 +859,8 @@ nav.main .drop-toggle[aria-expanded="true"] {
   box-shadow: 10px 12px 0 rgba(22,48,78,.55);
   max-width: 100%;
   display: block;
+  transform: rotate(2deg);
+  animation: sway 7s ease-in-out infinite;
 }
 
 @keyframes sway {
@@ -1541,7 +1567,7 @@ textarea {
 footer.site {
   background: var(--navy);
   color: var(--cream);
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .foot-grid {
@@ -1555,6 +1581,11 @@ footer.site {
   height: 120px;
   width: auto;
   margin-bottom: 1rem;
+}
+
+.brand-foot {
+  margin-bottom: 1rem;
+  display: inline-flex;
 }
 
 .foot-col h4 {
@@ -1891,8 +1922,8 @@ footer.site {
     grid-template-columns: 1fr;
   }
 
-  .sign-col {
-    width: min(100%, 420px);
+  .sign {
+    width: min(100%, 430px);
     margin-inline: auto;
   }
 
@@ -1951,8 +1982,7 @@ footer.site {
   .hero-cta .btn { justify-content: center; }
 
   .logo-img { height: 64px; }
-
-  .dispatch-panel { height: auto; min-height: 110px; }
+  .brand-logo { height: 40px; width: 40px; }
 }
 
 /* Reduced motion */

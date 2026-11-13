@@ -3,409 +3,306 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Goodman Atomic Appliance Service</title>
-<meta name="description" content="Appliance repair in Maryland, Virginia and Washington, D.C. Refrigerators, washers, dryers, ovens and dishwashers. Upfront estimates and a 3 to 12 month repair warranty.">
+<title>Goodman Atomic Appliance Service | Repair in Maryland, Virginia &amp; D.C.</title>
+<meta name="description" content="Appliance repair in Maryland, Northern Virginia and Washington D.C. Refrigerators, washers, dryers, ovens, dishwashers. Upfront estimates, 6–12 month warranty. Call (240) 744-0515.">
+<link rel="canonical" href="https://goodmanatomic.com/">
+<link rel="icon" type="image/png" href="assets/logo/logo-square.png">
+<link rel="apple-touch-icon" href="assets/logo/logo-round.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Passion+One:wght@400;700&family=VT323&family=Yellowtail&display=swap" rel="stylesheet">
-<style>
-/* Layout idea: an enamel tin sign unrolled into a page. Flat color bands with
-   speckle, heavy outlines, one orbiting atom in the hero, a CRT terminal for booking. */
-:root {
-  color-scheme: light;
-  --cream: #f4e7c5;
-  --cream-deep: #e9d6a6;
-  --teal: #3a8791;
-  --teal-deep: #2b6a73;
-  --red: #c12a1e;
-  --red-deep: #9c1f16;
-  --navy: #16304e;
-  --orange: #e5642a;
-  --ink: #1b2433;
-  --crt: #7dffa0;
-  --crt-bg: #06140c;
-  --font-display: "Passion One", "Impact", "Haettenschweiler", sans-serif;
-  --font-script: "Yellowtail", "Brush Script MT", cursive;
-  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
-  --font-term: "VT323", "Courier New", monospace;
-  --wrap: 1140px;
-  --edge: 3px solid var(--navy);
-  --speckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .8  0 0 0 -1.6 .9'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.55;
-  padding-bottom: 0;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; }
-.wrap { width: min(100% - 40px, var(--wrap)); margin-inline: auto; }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1; margin: 0; text-wrap: balance; letter-spacing: .01em; }
-h2 { font-size: clamp(2.1rem, 5vw, 3.3rem); text-transform: uppercase; }
-h3 { font-size: 1.55rem; text-transform: uppercase; }
-p { margin: 0; }
-.script { font-family: var(--font-script); font-size: clamp(1.5rem, 3.4vw, 2.1rem); color: var(--red); line-height: 1; display: block; margin-bottom: 6px; transform: rotate(-2deg); transform-origin: left; }
-:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
-.skip { position: absolute; left: -999px; top: 0; background: var(--navy); color: var(--cream); padding: 10px 16px; z-index: 100; }
-.skip:focus { left: 8px; top: 8px; }
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: .03em;
-  padding: 13px 24px 11px; border: var(--edge); border-radius: 999px; cursor: pointer; text-decoration: none;
-  box-shadow: 0 5px 0 var(--navy); transition: transform .12s ease, box-shadow .12s ease; line-height: 1.1;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--navy); }
-.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--navy); }
-.btn-red { background: var(--red); color: var(--cream); }
-.btn-cream { background: var(--cream); color: var(--navy); }
-.btn-navy { background: var(--navy); color: var(--cream); box-shadow: 0 5px 0 var(--red-deep); border-color: var(--navy); }
-.btn-navy:hover { box-shadow: 0 7px 0 var(--red-deep); }
-.btn svg { width: 22px; height: 22px; flex: none; }
-
-/* Top strip + header */
-.strip { background: var(--navy); color: var(--cream); font-size: .9rem; font-weight: 500; }
-.strip .wrap { display: flex; flex-wrap: wrap; gap: 4px 22px; justify-content: space-between; padding-block: 7px; }
-header.site { background: var(--cream); border-bottom: var(--edge); position: sticky; top: 0; z-index: 40; }
-header.site .wrap { display: flex; align-items: center; gap: 18px; padding-block: 10px; }
-.brand { display: flex; align-items: baseline; gap: 8px; text-decoration: none; flex-wrap: wrap; line-height: 1; }
-.brand .g { font-family: var(--font-script); font-size: 2rem; color: var(--navy); }
-.brand .a { font-family: var(--font-display); font-size: 1.5rem; color: var(--red); text-transform: uppercase; font-style: italic; }
-nav.main { margin-left: auto; display: flex; gap: 22px; font-weight: 600; }
-nav.main a { text-decoration: none; padding: 6px 0; border-bottom: 3px solid transparent; }
-nav.main a:hover { border-color: var(--red); }
-.head-cta { display: flex; align-items: center; gap: 14px; }
-.head-phone { font-family: var(--font-display); font-size: 1.45rem; color: var(--navy); text-decoration: none; white-space: nowrap; }
-header .btn { font-size: 1.05rem; padding: 9px 18px 7px; box-shadow: 0 4px 0 var(--navy); }
-
-/* Hero */
-.hero { background: var(--teal) var(--speckle); color: var(--cream); border-bottom: var(--edge); position: relative; overflow: hidden; }
-.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; padding-block: 56px 64px; position: relative; }
-.hero h1 { font-size: clamp(2.7rem, 7vw, 4.9rem); text-transform: uppercase; text-shadow: 3px 3px 0 var(--navy); }
-.hero h1 em { font-style: normal; color: #ffd27a; }
-.hero .script { color: var(--cream); text-shadow: 2px 2px 0 var(--navy); }
-.hero p.lead { font-size: 1.2rem; max-width: 34em; margin-top: 18px; font-weight: 500; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 26px 0 0; padding: 0; list-style: none; }
-.chips li { background: var(--navy); color: var(--cream); border-radius: 999px; padding: 5px 14px; font-size: .92rem; font-weight: 600; }
-.sign { position: relative; justify-self: center; width: min(100%, 540px); }
-.sign img { border-radius: 18px; border: 4px solid var(--navy); box-shadow: 10px 12px 0 rgba(22,48,78,.55); transform: rotate(2deg); animation: sway 7s ease-in-out infinite; }
-@keyframes sway { 0%,100% { transform: rotate(2deg) translateY(0); } 50% { transform: rotate(1deg) translateY(-8px); } }
-.burst { position: absolute; color: #ffd27a; animation: twinkle 3.2s ease-in-out infinite; }
-.burst.b1 { width: 54px; left: -22px; top: -26px; }
-.burst.b2 { width: 34px; right: -12px; bottom: 8px; animation-delay: 1.3s; color: var(--cream); }
-.burst.b3 { width: 26px; right: 22%; top: -30px; animation-delay: .6s; color: var(--orange); }
-@keyframes twinkle { 0%,100% { transform: scale(1) rotate(0); opacity: 1; } 50% { transform: scale(.72) rotate(18deg); opacity: .65; } }
-.atom { position: absolute; width: 520px; height: 520px; right: -170px; top: -190px; opacity: .2; color: var(--cream); pointer-events: none; }
-.atom g { transform-origin: 50% 50%; animation: spin 38s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Sections */
-section { padding-block: 68px; }
-.sec-head { max-width: 46em; margin-bottom: 34px; }
-.sec-head p { margin-top: 12px; font-size: 1.1rem; }
-.band-cream { background: var(--cream) var(--speckle); }
-.band-navy { background: var(--navy); color: var(--cream); }
-.band-navy .script { color: #ffd27a; }
-.band-red { background: var(--red) var(--speckle); color: var(--cream); border-block: var(--edge); }
-.band-red .script { color: var(--cream); }
-
-/* Service cards */
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0; margin: 0; list-style: none; }
-.card { background: #fbf2d8; border: var(--edge); border-radius: 16px; padding: 22px 22px 20px; box-shadow: 6px 6px 0 var(--teal); display: flex; flex-direction: column; gap: 10px; transition: transform .15s ease, box-shadow .15s ease; }
-.card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--red); }
-.card .ico { width: 62px; height: 62px; border-radius: 50%; background: var(--teal); color: var(--cream); border: var(--edge); display: grid; place-items: center; }
-.card .ico svg { width: 34px; height: 34px; }
-.card h3 { color: var(--navy); }
-.card p { font-size: 1rem; }
-.also { margin-top: 26px; font-weight: 600; }
-
-/* Steps */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; counter-reset: s; padding: 0; margin: 0; list-style: none; }
-.steps li { counter-increment: s; border-top: 4px solid var(--red); padding-top: 16px; }
-.steps li::before { content: "0" counter(s); font-family: var(--font-display); font-size: 3rem; color: #ffd27a; line-height: 1; display: block; margin-bottom: 6px; }
-.steps h3 { margin-bottom: 8px; }
-
-/* Brands */
-.brands { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
-.brands li { border: 2px solid var(--navy); border-radius: 8px; padding: 7px 15px; font-weight: 700; background: #fbf2d8; letter-spacing: .02em; }
-.fine { margin-top: 18px; font-size: .93rem; opacity: .85; max-width: 52em; }
-
-/* Warranty */
-.warranty .wrap { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
-.seal { width: 210px; height: 210px; border-radius: 50%; background: var(--cream); color: var(--navy); border: 4px solid var(--navy); box-shadow: 0 0 0 8px var(--red-deep), 0 0 0 11px var(--navy); display: grid; place-items: center; text-align: center; transform: rotate(-8deg); margin: 14px; }
-.seal b { font-family: var(--font-display); font-size: 4.2rem; line-height: .85; display: block; color: var(--red); font-weight: 400; }
-.seal span { font-family: var(--font-display); font-size: 1.15rem; text-transform: uppercase; letter-spacing: .06em; display: block; }
-.warranty p { font-size: 1.15rem; margin-top: 14px; max-width: 40em; }
-
-/* Dispatcher */
-.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.panel { border: var(--edge); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.panel.term { background: var(--crt-bg); color: var(--crt); font-family: var(--font-term); font-size: 1.35rem; line-height: 1.25; box-shadow: 6px 6px 0 var(--teal); position: relative; overflow: hidden; }
-.panel.term::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px); pointer-events: none; }
-.panel.term h3 { font-family: var(--font-term); font-size: 2rem; letter-spacing: .04em; color: var(--crt); text-shadow: 0 0 8px rgba(125,255,160,.6); }
-.panel.term .btn { position: relative; z-index: 1; background: var(--crt); color: var(--crt-bg); border-color: var(--crt); box-shadow: 0 5px 0 #2d8a4a; font-family: var(--font-term); font-size: 1.5rem; padding: 8px 22px; }
-.cursor::after { content: "█"; animation: blink 1s steps(1) infinite; margin-left: 2px; }
-@keyframes blink { 50% { opacity: 0; } }
-.panel.voice { background: #fbf2d8; box-shadow: 6px 6px 0 var(--red); }
-.panel.voice h3 { color: var(--navy); }
-.bignum { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.8rem); color: var(--red); line-height: 1; }
-
-/* Area */
-.area .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.states { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
-.states li { display: flex; align-items: center; gap: 16px; border: 2px solid rgba(244,231,197,.5); border-radius: 12px; padding: 12px 18px; }
-.states b { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; color: #ffd27a; width: 62px; line-height: 1; }
-
-/* Form */
-.book .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 44px; align-items: start; }
-.contact-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
-.contact-list span { display: block; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--teal-deep); }
-.contact-list a, .contact-list p { font-size: 1.15rem; font-weight: 600; }
-form.req { background: #fbf2d8; border: var(--edge); border-radius: 18px; padding: 26px; box-shadow: 8px 8px 0 var(--navy); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.field { display: grid; gap: 5px; }
-.field.full { grid-column: 1 / -1; }
-label { font-weight: 700; font-size: .93rem; }
-input, select, textarea { font: inherit; padding: 11px 12px; border: 2px solid var(--navy); border-radius: 9px; background: #fffaf0; color: var(--ink); width: 100%; }
-textarea { min-height: 96px; resize: vertical; }
-.form-note { grid-column: 1 / -1; background: var(--navy); color: var(--cream); border-radius: 10px; padding: 12px 16px; font-weight: 500; }
-.form-note[hidden] { display: none; }
-
-/* Footer */
-footer { background: var(--navy); color: var(--cream); padding-block: 40px 110px; font-size: .97rem; }
-footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
-footer .brand .g { color: var(--cream); } footer .brand .a { color: #ffd27a; }
-footer h4 { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; color: #ffd27a; }
-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
-.copy { grid-column: 1 / -1; border-top: 1px solid rgba(244,231,197,.3); padding-top: 16px; opacity: .8; font-size: .88rem; }
-
-/* Mobile action bar */
-.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: none; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--cream); border-top: var(--edge); }
-.bar .btn { flex: 1; font-size: 1.1rem; padding: 11px 10px 9px; box-shadow: 0 4px 0 var(--navy); }
-
-/* Chat terminal */
-.fab { position: fixed; right: 22px; bottom: 22px; z-index: 46; background: var(--crt-bg); color: var(--crt); border: 3px solid var(--crt); border-radius: 14px; font-family: var(--font-term); font-size: 1.4rem; padding: 10px 18px; cursor: pointer; box-shadow: 0 0 0 3px var(--navy), 6px 8px 0 rgba(22,48,78,.5); display: flex; align-items: center; gap: 10px; }
-.fab i { width: 11px; height: 11px; border-radius: 50%; background: var(--crt); box-shadow: 0 0 9px var(--crt); animation: blink 1.6s steps(1) infinite; }
-.chat { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: min(400px, calc(100vw - 24px)); height: min(590px, calc(100% - 44px)); background: var(--crt-bg); color: var(--crt); border: 3px solid var(--crt); border-radius: 16px; box-shadow: 0 0 0 4px var(--navy), 0 22px 50px rgba(0,0,0,.45); display: none; flex-direction: column; font-family: var(--font-term); font-size: 1.3rem; line-height: 1.22; overflow: hidden; }
-.chat.open { display: flex; animation: boot .28s ease-out; }
-@keyframes boot { from { transform: scaleY(.04); filter: brightness(3); } to { transform: none; filter: none; } }
-.chat::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px); pointer-events: none; }
-.chat-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px; border-bottom: 2px solid var(--crt); text-transform: uppercase; letter-spacing: .05em; }
-.chat-head button { background: none; border: 2px solid var(--crt); color: var(--crt); font: inherit; border-radius: 6px; padding: 0 10px; cursor: pointer; position: relative; z-index: 1; }
-.log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
-.msg { max-width: 92%; white-space: pre-wrap; overflow-wrap: anywhere; }
-.msg.bot::before { content: "> "; }
-.msg.me { align-self: flex-end; background: var(--crt); color: var(--crt-bg); padding: 2px 10px; border-radius: 6px; }
-.msg.warn { border: 2px dashed var(--crt); padding: 8px 10px; border-radius: 8px; }
-.opts { display: flex; flex-wrap: wrap; gap: 7px; position: relative; z-index: 1; }
-.opts button { background: none; color: var(--crt); border: 2px solid var(--crt); border-radius: 6px; font: inherit; padding: 1px 11px; cursor: pointer; }
-.opts button:hover { background: var(--crt); color: var(--crt-bg); }
-.chat form { display: flex; gap: 8px; padding: 10px 12px; border-top: 2px solid var(--crt); position: relative; z-index: 1; }
-.chat input { background: #0b2415; color: var(--crt); border: 2px solid var(--crt); font: inherit; padding: 5px 10px; border-radius: 6px; }
-.chat input::placeholder { color: rgba(125,255,160,.55); }
-.chat form button { background: var(--crt); color: var(--crt-bg); border: 0; border-radius: 6px; font: inherit; padding: 0 14px; cursor: pointer; }
-
-/* Scroll-in: resting state is visible; the class only plays a short entrance */
-.rise { animation: rise .55s ease-out both; }
-@keyframes rise { from { opacity: .001; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-
-@media (max-width: 980px) {
-  nav.main { display: none; }
-  .head-cta { margin-left: auto; }
-  .hero .wrap { grid-template-columns: 1fr; padding-block: 38px 50px; gap: 34px; }
-  .sign { order: -1; width: min(100%, 430px); }
-  .cards { grid-template-columns: 1fr 1fr; }
-  .steps, .duo, .area .wrap, .book .wrap { grid-template-columns: 1fr; }
-  .warranty .wrap { grid-template-columns: 1fr; justify-items: start; gap: 20px; }
-  footer .wrap { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 640px) {
-  body { font-size: 16px; }
-  section { padding-block: 50px; }
-  .strip .wrap span:last-child { display: none; }
-  header .btn, .head-phone { display: none; }
-  .cards { grid-template-columns: 1fr; }
-  form.req { grid-template-columns: 1fr; padding: 20px; }
-  .hero-cta .btn { width: 100%; }
-  .seal { width: 170px; height: 170px; } .seal b { font-size: 3.4rem; }
-  footer .wrap { grid-template-columns: 1fr; }
-  .bar { display: flex; }
-  .fab { display: none; }
-  .chat { right: 12px; bottom: 12px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-}
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Goodman Atomic Appliance Service","telephone":"+12407440515","email":"info@andyduckrepair.com","address":{"@type":"PostalAddress","streetAddress":"118 Monroe St","addressLocality":"Rockville","addressRegion":"MD","postalCode":"20850","addressCountry":"US"},"areaServed":["Maryland","Virginia","Washington DC"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"17:00"},"priceRange":"$$"}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="strip"><div class="wrap">
-  <span>Open every day, 8:00 AM to 5:00 PM</span>
-  <span>Serving Maryland, Virginia and Washington, D.C.</span>
-</div></div>
-
-<header class="site"><div class="wrap">
-  <a class="brand" href="#top" aria-label="Goodman Atomic Appliance Service, home">
-    <span class="g">Goodman</span><span class="a">Atomic</span>
-  </a>
-  <nav class="main" aria-label="Main">
-    <a href="#services">Services</a>
-    <a href="#brands">Brands</a>
-    <a href="#warranty">Warranty</a>
-    <a href="#area">Service area</a>
-  </nav>
-  <div class="head-cta">
-    <a class="head-phone" href="tel:+12407440515">(240) 744-0515</a>
-    <a class="btn btn-red" href="#book">Request service</a>
+<!-- Top strip -->
+<div class="strip">
+  <div class="wrap">
+    <span>Open every day · 8 am – 5 pm</span>
+    <span>Maryland · Northern Virginia · Washington, D.C.</span>
   </div>
-</div></header>
+</div>
+
+<!-- Header -->
+<header class="site" role="banner">
+  <div class="wrap">
+    <div class="head-inner">
+      <a class="brand" href="/" aria-label="Goodman Atomic Appliance Service — home">
+        <span class="g">Goodman</span><span class="a">Atomic</span><img class="brand-logo" src="assets/logo/logo-round-192.webp" alt="" width="48" height="48" aria-hidden="true">
+      </a>
+      <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main" id="mainNav" aria-label="Site navigation">
+        <div class="has-drop">
+          <button class="drop-toggle" aria-expanded="false" aria-haspopup="true">Services <span aria-hidden="true">▾</span></button>
+          <div class="drop-menu" role="menu">
+            <a href="services/refrigerator-repair.html" role="menuitem">Refrigerator &amp; Freezer</a>
+            <a href="#" role="menuitem">Washer Repair</a>
+            <a href="#" role="menuitem">Dryer Repair</a>
+            <a href="#" role="menuitem">Dishwasher Repair</a>
+            <a href="#" role="menuitem">Oven &amp; Stove Repair</a>
+            <a href="#" role="menuitem">Microwave Repair</a>
+          </div>
+        </div>
+        <a href="#brands">Brands</a>
+        <a href="#warranty">Warranty</a>
+        <div class="has-drop">
+          <button class="drop-toggle" aria-expanded="false" aria-haspopup="true">Service area <span aria-hidden="true">▾</span></button>
+          <div class="drop-menu" role="menu">
+            <a href="#area" role="menuitem">Washington, D.C.</a>
+            <a href="#area" role="menuitem">MD — Montgomery County</a>
+            <a href="#area" role="menuitem">MD — Howard County</a>
+            <a href="#area" role="menuitem">MD — Frederick County</a>
+            <a href="#area" role="menuitem">VA — Arlington County</a>
+            <a href="#area" role="menuitem">VA — Fairfax County (east)</a>
+          </div>
+        </div>
+      </nav>
+      <div class="head-cta">
+        <a class="head-phone" href="tel:+12407440515">(240) 744-0515</a>
+        <a class="btn btn-red" href="#book">Request service</a>
+      </div>
+    </div>
+  </div>
+</header>
 
 <main id="main">
-<div class="hero" id="top">
-  <svg class="atom" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
-    <g><ellipse cx="100" cy="100" rx="92" ry="34"/><ellipse cx="100" cy="100" rx="92" ry="34" transform="rotate(60 100 100)"/><ellipse cx="100" cy="100" rx="92" ry="34" transform="rotate(120 100 100)"/><circle cx="192" cy="100" r="6" fill="currentColor"/></g>
-    <circle cx="100" cy="100" r="11" fill="currentColor"/>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top" aria-label="Welcome to Goodman Atomic">
+  <!-- Background atom -->
+  <svg class="atom" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <g class="orbit-a" stroke="white" stroke-width="1.5">
+      <circle cx="100" cy="100" r="92" fill="none"/>
+      <ellipse cx="100" cy="100" rx="92" ry="28"/>
+      <circle cx="192" cy="100" r="6" fill="white" stroke="none"/>
+    </g>
+    <g class="orbit-b" stroke="white" stroke-width="1.5">
+      <circle cx="100" cy="100" r="92" fill="none"/>
+      <ellipse cx="100" cy="100" rx="92" ry="28" transform="rotate(60 100 100)"/>
+      <circle cx="146" cy="20.3" r="5" fill="white" stroke="none"/>
+    </g>
+    <g class="orbit-c" stroke="white" stroke-width="1.5">
+      <circle cx="100" cy="100" r="92" fill="none"/>
+      <ellipse cx="100" cy="100" rx="92" ry="28" transform="rotate(120 100 100)"/>
+      <circle cx="54" cy="20.3" r="5" fill="white" stroke="none"/>
+    </g>
+    <circle cx="100" cy="100" r="12" fill="white" stroke="none"/>
   </svg>
+
   <div class="wrap">
-    <div>
-      <span class="script">Fixed right, the first visit</span>
-      <h1>Appliance repair with <em>atomic-age</em> precision</h1>
-      <p class="lead">Goodman Atomic repairs refrigerators, washers, dryers, ovens and dishwashers in homes and businesses across Maryland, Virginia and Washington, D.C. You get a clear estimate before any work starts.</p>
+    <!-- Left: copy -->
+    <div class="hero-text">
+      <span class="script">The future of repair is here!</span>
+      <h1>Your appliances, <em>back in working order</em></h1>
+      <p class="lead">Goodman Atomic handles appliance repair for homes and businesses across Maryland, Northern Virginia and Washington, D.C. Clear estimate before any work starts.</p>
       <div class="hero-cta">
-        <button class="btn btn-red" type="button" data-open-chat>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
-          Book with the AI dispatcher
+        <button class="btn btn-red" type="button" data-open-chat aria-haspopup="dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
+          Book with AI dispatcher
         </button>
         <a class="btn btn-cream" href="tel:+12407440515">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
           Call (240) 744-0515
         </a>
       </div>
       <ul class="chips">
         <li>Upfront estimates</li>
-        <li>3 to 12 month repair warranty</li>
+        <li>6–12 month repair warranty</li>
         <li>Homes and businesses</li>
         <li>Open 7 days a week</li>
+        <li>Same-day service available</li>
+        <li>Genuine OEM parts</li>
       </ul>
     </div>
+
+    <!-- Right: sign -->
     <div class="sign">
       <svg class="burst b1" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
       <svg class="burst b2" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
       <svg class="burst b3" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
-      <img src="assets/goodman-atomic-sign.webp" width="1080" height="720" alt="Goodman Atomic Appliance Service sign with the company's repair robot">
+      <img src="assets/goodman-atomic-sign.webp" width="1080" height="720"
+        alt="Goodman Atomic Appliance Service — retro sign with repair mascot"
+        loading="eager">
     </div>
   </div>
-</div>
+</section>
 
+
+<!-- ═══ SERVICES ═══ -->
 <section class="band-cream" id="services">
   <div class="wrap">
     <div class="sec-head" data-rise>
       <span class="script">What we repair</span>
-      <h2>Every machine that keeps a house running</h2>
+      <h2>Every appliance that keeps a house running</h2>
     </div>
-    <ul class="cards">
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M6 9.5h12M9 5.5v1.5M9 12.5v3"/></svg></div>
-        <h3>Refrigerators and freezers</h3>
+    <div class="cards">
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M6 9h12M9 5v2M9 13v3"/></svg>
+        </div>
+        <h3>Refrigerators &amp; freezers</h3>
         <p>Not cooling, leaking, frosting over, or running loud.</p>
-      </li>
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2"/><circle cx="12" cy="13.5" r="4.5"/><path d="M7 5.8h.01M10 5.8h4"/></svg></div>
+        <a class="card-link" href="services/refrigerator-repair.html">Learn more →</a>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M7 6h.01M10 6h4"/></svg>
+        </div>
         <h3>Washers</h3>
         <p>Will not drain, will not spin, shakes, or leaks on the floor.</p>
-      </li>
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2"/><circle cx="12" cy="13.5" r="4.5"/><path d="M10.5 13c.8-1 2.200-1 3 0s-.7 1.800-1.500 2.200M7 5.800h3"/></svg></div>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M11 13c.6-1 1.8-1 2.5 0s-.5 1.8-1.3 2.1M7 6h3"/></svg>
+        </div>
         <h3>Dryers</h3>
         <p>No heat, long dry times, a drum that will not turn.</p>
-      </li>
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 7.500h16M8 5h.01M9 12c1 1.500 1 3 0 4.500M12 12c1 1.500 1 3 0 4.500M15 12c1 1.500 1 3 0 4.500"/></svg></div>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16M8 5h.01M9 12c1 1.5 1 3 0 4.5M12 12c1 1.5 1 3 0 4.5M15 12c1 1.5 1 3 0 4.5"/></svg>
+        </div>
         <h3>Dishwashers</h3>
         <p>Dishes come out dirty, water stays in the tub, the door leaks.</p>
-      </li>
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2.500" width="16" height="19" rx="2"/><path d="M4 8h16M7.500 5.300h.01M11 5.300h.01M14.500 5.300h.01"/><rect x="7.500" y="11" width="9" height="6.500" rx="1"/></svg></div>
-        <h3>Ovens and stoves</h3>
-        <p>Burners that will not light, uneven baking, a dead igniter.</p>
-      </li>
-      <li class="card" data-rise>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2.500" y="5" width="19" height="13" rx="2"/><rect x="5.500" y="8" width="9" height="7" rx="1"/><path d="M18 8.500h.01M18 11.500h.01M18 14.500h.01"/></svg></div>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 8h16M7.5 5h.01M11 5h.01M14.5 5h.01"/><rect x="7.5" y="11" width="9" height="7" rx="1"/></svg>
+        </div>
+        <h3>Ovens &amp; stoves</h3>
+        <p>Burners that won't light, uneven baking, a dead igniter.</p>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><rect x="5" y="8" width="10" height="8" rx="1"/><path d="M18 9h.01M18 12h.01M18 15h.01"/></svg>
+        </div>
         <h3>Microwaves</h3>
         <p>Runs but does not heat, sparks, or a turntable that stopped.</p>
-      </li>
-    </ul>
-    <p class="also" data-rise>We also repair wine coolers and ice machines, at home or in a commercial kitchen.</p>
+      </article>
+
+    </div>
   </div>
 </section>
 
+
+<!-- ═══ HOW IT WORKS ═══ -->
 <section class="band-navy" id="how">
   <div class="wrap">
-    <div class="sec-head" data-rise>
+    <div class="sec-head sec-head-left" data-rise>
       <span class="script">How a repair goes</span>
       <h2>Three steps from broken to running</h2>
     </div>
     <ol class="steps">
-      <li data-rise><h3>Tell us what broke</h3><p>Book in the chat terminal, call, or send the request form. Pick the arrival window that suits you.</p></li>
-      <li data-rise><h3>Get a clear estimate</h3><p>A technician finds the fault and gives you the cost upfront. Work starts only after you agree.</p></li>
-      <li data-rise><h3>Repaired and covered</h3><p>We fix the appliance and back the repair with a warranty of 3 to 12 months.</p></li>
+      <li class="step" data-rise>
+        <h3>Tell us what broke</h3>
+        <p>Book in the chat terminal, call, or fill the form. Pick the arrival window that suits you.</p>
+      </li>
+      <li class="step" data-rise>
+        <h3>Get a clear estimate</h3>
+        <p>A technician finds the fault and gives you the cost upfront. Work only starts after you agree.</p>
+      </li>
+      <li class="step" data-rise>
+        <h3>Repaired and covered</h3>
+        <p>We fix the appliance and back every repair with a 6 to 12 month warranty.</p>
+      </li>
     </ol>
   </div>
 </section>
 
+
+<!-- ═══ BRANDS ═══ -->
 <section class="band-cream" id="brands">
   <div class="wrap">
     <div class="sec-head" data-rise>
       <span class="script">Brands we service</span>
-      <h2>Seventeen makes, from Kenmore to Sub-Zero</h2>
+      <h2>All major brands,<br>from Kenmore to <span style="white-space:nowrap">Sub-Zero</span></h2>
     </div>
-    <ul class="brands" data-rise>
-      <li>Bosch</li><li>Electrolux</li><li>Frigidaire</li><li>Haier</li><li>Hotpoint</li><li>Jenn-Air</li><li>Kenmore</li><li>KitchenAid</li><li>LG</li><li>Magic Chef</li><li>Maytag</li><li>Monogram</li><li>Samsung</li><li>Sub-Zero</li><li>Thermador</li><li>Viking</li><li>Whirlpool</li>
+    <ul class="brands" data-rise aria-label="Brands we service">
+      <li>Bosch</li>
+      <li>Electrolux</li>
+      <li>Frigidaire</li>
+      <li>GE</li>
+      <li>Haier</li>
+      <li>Hotpoint</li>
+      <li>Jenn-Air</li>
+      <li>Kenmore</li>
+      <li>KitchenAid</li>
+      <li>LG</li>
+      <li>Magic Chef</li>
+      <li>Maytag</li>
+      <li>Miele</li>
+      <li>Monogram</li>
+      <li>Samsung</li>
+      <li>Sub-Zero</li>
+      <li>Thermador</li>
+      <li>Viking</li>
+      <li>Whirlpool</li>
+      <li>Wolf</li>
+      <li class="brands-more">… and all other major manufacturers</li>
     </ul>
-    <p class="fine">Brand names belong to their owners. Goodman Atomic is an independent repair company and is not affiliated with these manufacturers.</p>
+    <p class="brands-fine">Brand names belong to their owners. Goodman Atomic is an independent service company not affiliated with any manufacturer.</p>
   </div>
 </section>
 
+
+<!-- ═══ WARRANTY ═══ -->
 <section class="band-red warranty" id="warranty">
   <div class="wrap">
-    <div class="seal" data-rise aria-hidden="true"><div><span>Up to</span><b>12</b><span>months<br>warranty</span></div></div>
+    <div class="seal" data-rise aria-label="6 to 12 months warranty">
+      <div class="seal-num">6–12</div>
+      <div class="seal-label">months<br>warranty</div>
+    </div>
     <div data-rise>
       <span class="script">Our word on it</span>
       <h2>Every repair comes with a warranty</h2>
-      <p>Repairs are covered for 3 to 12 months, depending on the job. If the same fault returns inside that period, call us and we come back.</p>
+      <p>We stand behind our work with a 6 to 12 month warranty on every repair, depending on the job. If the same fault returns within that period, we come back at no charge.</p>
     </div>
   </div>
 </section>
 
+
+<!-- ═══ AI DISPATCHER ═══ -->
 <section class="band-cream" id="dispatch">
   <div class="wrap">
     <div class="sec-head" data-rise>
-      <span class="script">Meet the dispatcher</span>
-      <h2>Book by chat or by voice, at any hour</h2>
-      <p>Our AI dispatcher takes the details and reserves your arrival window. No hold music.</p>
+      <span class="script">Book instantly</span>
+      <h2>Chat or call — available around the clock</h2>
+      <p>Our AI dispatcher answers at any hour, takes the details and locks in your arrival window. No hold music, no waiting.</p>
     </div>
-    <div class="duo">
-      <div class="panel term" data-rise>
+    <div class="duo" data-rise>
+      <!-- Green CRT: text dispatch -->
+      <div class="panel term">
         <h3>Dispatch terminal</h3>
-        <p>&gt; Appliance, problem, ZIP code, time window.<br>&gt; Four questions and you are booked<span class="cursor"></span></p>
-        <button class="btn" type="button" data-open-chat>Open terminal</button>
+        <p>APPLIANCE. PROBLEM. ZIP. TIME.</p>
+        <p>FOUR QUESTIONS AND BOOKED<span class="cursor" aria-hidden="true"></span></p>
+        <p>READY</p>
+        <div class="crt-bignum">BOOK ONLINE</div>
+        <button class="btn btn-crt" type="button" data-open-chat aria-haspopup="dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
+          Open terminal
+        </button>
       </div>
-      <div class="panel voice" data-rise>
-        <h3>Talk to the AI assistant</h3>
-        <p>Prefer to say it out loud? Call and describe the problem. The assistant books the visit while you talk.</p>
-        <p class="bignum">(240) 744-0515</p>
-        <a class="btn btn-navy" href="tel:+12407440515">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      <!-- Amber CRT: voice line -->
+      <div class="panel amber-crt">
+        <h3>Voice line</h3>
+        <p>LINE STATUS: ACTIVE</p>
+        <p>ASSISTANT: READY</p>
+        <p>DIAL NOW<span class="amber-cursor" aria-hidden="true"></span></p>
+        <div class="crt-bignum">(240) 744-0515</div>
+        <a class="btn btn-amber" href="tel:+12407440515">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
           Call the assistant
         </a>
       </div>
@@ -413,172 +310,222 @@ footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
   </div>
 </section>
 
+
+<!-- ═══ SERVICE AREA ═══ -->
 <section class="band-navy area" id="area">
   <div class="wrap">
-    <div data-rise>
+    <div class="area-left" data-rise>
       <span class="script">Where we work</span>
       <h2>All across the DMV</h2>
-      <p style="margin-top:14px;font-size:1.1rem;max-width:30em">Our technicians cover Maryland, Northern Virginia and the District. Give us your ZIP code and we will confirm the next open window.</p>
+      <p>Our technicians cover Washington, D.C., nearby Maryland and the close-in part of Northern Virginia.</p>
+
+      <div class="states" data-rise>
+        <!-- Maryland -->
+        <details class="state-block">
+          <summary class="state-summary">
+            <span class="state-abbr">MD</span>
+            <span class="state-info">
+              <strong>Maryland</strong>
+              <span class="state-counties">Montgomery · Howard · Frederick</span>
+            </span>
+            <span class="state-toggle"><span class="t-show">Show cities</span><span class="t-hide">Hide cities</span></span>
+          </summary>
+          <div class="state-cities">
+            <p><strong>Montgomery County:</strong> Rockville, Bethesda, Gaithersburg, Silver Spring, Germantown, Potomac, Chevy Chase, North Bethesda, North Potomac, Takoma Park, Kensington, Wheaton, Olney, Aspen Hill, Montgomery Village, Clarksburg, Damascus, Poolesville, Burtonsville, Colesville, White Oak, Derwood, Darnestown, Boyds, Cabin John, Glen Echo, Garrett Park, Laytonsville, Sandy Spring, Ashton, Brookeville, Washington Grove, Barnesville, Dickerson.</p>
+            <p><strong>Howard County:</strong> Columbia, Ellicott City, Elkridge, North Laurel, Savage, Jessup, Fulton, Clarksville, Highland, Scaggsville, Dayton, Glenelg, Glenwood, West Friendship, Cooksville, Lisbon, Woodbine, Marriottsville.</p>
+            <p><strong>Frederick County:</strong> Frederick, Urbana, Ballenger Creek, Middletown, Brunswick, Thurmont, Walkersville, New Market, Mount Airy, Myersville, Emmitsburg, Woodsboro, Jefferson, Adamstown, Buckeystown, Ijamsville, Monrovia, Libertytown, Point of Rocks, Braddock Heights, Lake Linganore.</p>
+          </div>
+        </details>
+
+        <!-- Virginia -->
+        <details class="state-block">
+          <summary class="state-summary">
+            <span class="state-abbr">VA</span>
+            <span class="state-info">
+              <strong>Northern Virginia</strong>
+              <span class="state-counties">Arlington · Fairfax (east)</span>
+            </span>
+            <span class="state-toggle"><span class="t-show">Show cities</span><span class="t-hide">Hide cities</span></span>
+          </summary>
+          <div class="state-cities">
+            <p><strong>Arlington County:</strong> Arlington, Rosslyn, Clarendon, Ballston, Crystal City, Pentagon City, Shirlington.</p>
+            <p><strong>Fairfax County (east):</strong> McLean, Falls Church, Fairfax, Vienna, Tysons, Annandale, Great Falls, Oakton, Merrifield, Dunn Loring.</p>
+          </div>
+        </details>
+
+        <!-- DC -->
+        <div class="state-block state-static">
+          <div class="state-summary">
+            <span class="state-abbr">DC</span>
+            <span class="state-info">
+              <strong>Washington, D.C.</strong>
+            </span>
+          </div>
+          <p class="state-cities">All neighborhoods.</p>
+        </div>
+      </div>
     </div>
-    <ul class="states" data-rise>
-      <li><b>MD</b><span>Maryland</span></li>
-      <li><b>VA</b><span>Virginia</span></li>
-      <li><b>DC</b><span>Washington, D.C.</span></li>
-    </ul>
+
+    <div class="area-right" data-rise>
+      <div class="zip-checker">
+        <h3>Check your ZIP</h3>
+        <p>Enter your ZIP code to see if we service your area.</p>
+        <div class="zip-row">
+          <label for="zipInput" class="sr-only">ZIP code</label>
+          <input id="zipInput" type="text" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="ZIP code" class="zip-input" autocomplete="postal-code">
+          <button type="button" class="btn btn-cream zip-btn" id="zipBtn">Check</button>
+        </div>
+        <p class="zip-result" id="zipResult" aria-live="polite"></p>
+      </div>
+    </div>
   </div>
 </section>
 
+
+<!-- ═══ BOOK / CONTACT ═══ -->
 <section class="band-cream book" id="book">
   <div class="wrap">
-    <div data-rise>
-      <span class="script">Request service</span>
-      <h2>Tell us what needs fixing</h2>
-      <ul class="contact-list">
-        <li><span>Phone</span><a href="tel:+12407440515">(240) 744-0515</a></li>
-        <li><span>Email</span><a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a></li>
-        <li><span>Hours</span><p>Monday to Sunday, 8:00 AM to 5:00 PM</p></li>
-        <li><span>Office</span><p>118 Monroe St, Rockville, MD 20850</p></li>
+    <div class="book-info" data-rise>
+      <span class="script">Get in touch</span>
+      <h2>Request service</h2>
+      <p>Call, email, or fill the form. We'll confirm your slot and give you a time window the same day.</p>
+      <ul style="list-style:none;padding:0;margin-top:1.6rem;display:grid;gap:.85rem;font-size:1rem">
+        <li>
+          <strong>Phone</strong><br>
+          <a href="tel:+12407440515" class="tel-link">(240) 744-0515</a>
+        </li>
+        <li>
+          <strong>Email</strong><br>
+          <a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a>
+        </li>
+        <li>
+          <strong>Hours</strong><br>
+          Monday – Sunday, 8:00 am – 5:00 pm
+        </li>
+        <li>
+          <strong>Office</strong><br>
+          118 Monroe St, Rockville, MD 20850
+        </li>
       </ul>
     </div>
+
     <form class="req" id="reqForm" novalidate data-rise>
-      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-      <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
-      <div class="field full"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
-      <div class="field"><label for="f-app">Appliance</label>
-        <select id="f-app" name="appliance"><option>Refrigerator</option><option>Freezer</option><option>Washer</option><option>Dryer</option><option>Dishwasher</option><option>Oven or stove</option><option>Microwave</option><option>Other</option></select></div>
-      <div class="field"><label for="f-slot">Arrival window</label>
-        <select id="f-slot" name="slot"><option>9:00 AM to 12:00 PM</option><option>12:00 PM to 3:00 PM</option><option>3:00 PM to 6:00 PM</option></select></div>
-      <div class="field full"><label for="f-prob">What is it doing wrong?</label><textarea id="f-prob" name="problem"></textarea></div>
-      <div class="field full"><button class="btn btn-red" type="submit">Send request</button></div>
-      <p class="form-note" id="formNote" role="status" hidden></p>
+      <div class="field-group">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your full name">
+      </div>
+      <div class="field-group">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="(xxx) xxx-xxxx">
+      </div>
+      <div class="field-group">
+        <label for="f-app">Appliance</label>
+        <select id="f-app" name="appliance">
+          <option>Refrigerator</option>
+          <option>Freezer</option>
+          <option>Washer</option>
+          <option>Dryer</option>
+          <option>Dishwasher</option>
+          <option>Oven or stove</option>
+          <option>Microwave</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="f-slot">Arrival window</label>
+        <select id="f-slot" name="slot">
+          <option>9 AM – 12 PM</option>
+          <option>12 PM – 3 PM</option>
+          <option>3 PM – 6 PM</option>
+        </select>
+      </div>
+      <div class="field-group full">
+        <label for="f-email">Email (optional)</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="field-group full">
+        <label for="f-prob">What is it doing wrong?</label>
+        <textarea id="f-prob" name="problem" placeholder="A brief description of the problem…"></textarea>
+      </div>
+      <div class="full">
+        <button class="btn btn-red req-submit" type="submit">Send request</button>
+      </div>
+      <p id="formNote" aria-live="polite" class="full"></p>
     </form>
   </div>
 </section>
-</main>
 
-<footer><div class="wrap">
-  <div>
-    <a class="brand" href="#top"><span class="g">Goodman</span><span class="a">Atomic</span></a>
-    <p style="margin-top:10px;max-width:26em">Appliance service for homes and businesses in Maryland, Virginia and Washington, D.C.</p>
+</main><!-- /main -->
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site" role="contentinfo">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="brand brand-foot" href="/" aria-label="Goodman Atomic — home">
+          <span class="g">Goodman</span><span class="a">Atomic</span><img class="brand-logo brand-logo-foot" src="assets/logo/logo-round-512.webp" alt="" width="56" height="56" aria-hidden="true">
+        </a>
+        <p>Appliance service for homes and businesses in Maryland, Northern Virginia and Washington, D.C.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+12407440515">(240) 744-0515</a></li>
+          <li><a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a></li>
+          <li>118 Monroe St, Rockville, MD 20850</li>
+          <li>Mon – Sun, 8:00 am – 5:00 pm</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <nav class="foot-nav" aria-label="Service pages">
+          <a href="services/refrigerator-repair.html">Refrigerator Repair</a>
+          <a href="#services">Washer Repair</a>
+          <a href="#services">Dryer Repair</a>
+          <a href="#services">Dishwasher Repair</a>
+          <a href="#services">Oven &amp; Stove Repair</a>
+          <a href="#services">Microwave Repair</a>
+        </nav>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Goodman Atomic Appliance Service. All rights reserved.</span>
+      <span>Maryland · Northern Virginia · Washington, D.C.</span>
+    </div>
   </div>
-  <div><h4>Contact</h4><ul>
-    <li><a href="tel:+12407440515">(240) 744-0515</a></li>
-    <li><a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a></li>
-    <li>118 Monroe St, Rockville, MD 20850</li>
-    <li>Every day, 8:00 AM to 5:00 PM</li>
-  </ul></div>
-  <div><h4>Site</h4><ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#brands">Brands</a></li>
-    <li><a href="#warranty">Warranty</a></li>
-    <li><a href="#area">Service area</a></li>
-    <li><a href="#book">Request service</a></li>
-  </ul></div>
-  <p class="copy">© 2026 Goodman Atomic Appliance Service</p>
-</div></footer>
+</footer>
 
-<div class="bar">
-  <a class="btn btn-cream" href="tel:+12407440515">Call</a>
-  <button class="btn btn-red" type="button" data-open-chat>Book by chat</button>
+
+<!-- Mobile sticky bar -->
+<div class="bar" aria-label="Quick actions">
+  <a class="btn btn-cream" href="tel:+12407440515">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    Call
+  </a>
+  <button class="btn btn-red" type="button" data-open-chat aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
+    Book by chat
+  </button>
 </div>
 
-<button class="fab" type="button" id="fab" data-open-chat aria-haspopup="dialog"><i></i>BOOK A REPAIR</button>
+<!-- Desktop FAB -->
+<button class="fab" id="fab" aria-label="Book a repair — open chat terminal" data-open-chat>⌨</button>
 
-<div class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chatTitle">
-  <div class="chat-head"><span id="chatTitle">Goodman Atomic dispatch</span><button type="button" id="chatClose" aria-label="Close terminal">X</button></div>
-  <div class="log" id="log" aria-live="polite"></div>
-  <form id="chatForm" autocomplete="off">
-    <label for="chatInput" style="position:absolute;left:-999px">Your answer</label>
-    <input id="chatInput" placeholder="Type here">
-    <button type="submit">SEND</button>
-  </form>
+<!-- Chat terminal overlay -->
+<div id="chat" class="chat" role="dialog" aria-modal="true" aria-labelledby="chatTitle" aria-hidden="true">
+  <div class="chat-head">
+    <span class="chat-title" id="chatTitle">◈ GOODMAN ATOMIC DISPATCH</span>
+    <button class="chat-close" id="chatClose" aria-label="Close terminal" type="button">✕</button>
+  </div>
+  <div class="chat-log" id="chatLog" aria-live="polite" aria-atomic="false"></div>
+  <div class="chat-input-row">
+    <label for="chatInput" class="sr-only">Your answer</label>
+    <input class="chat-input" id="chatInput" type="text" placeholder="Type here…" autocomplete="off">
+    <button class="chat-send" id="chatSend" type="button" aria-label="Send">SEND</button>
+  </div>
 </div>
 
-<script>
-(function () {
-  var PHONE = '(240) 744-0515';
-
-  /* Entrance animation: elements are visible by default, class adds a short rise */
-  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!rm && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('rise'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('[data-rise]').forEach(function (el) {
-      if (el.getBoundingClientRect().top > window.innerHeight) io.observe(el);
-    });
-  }
-
-  /* Request form: not connected in this preview build */
-  var form = document.getElementById('reqForm'), note = document.getElementById('formNote');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = form.elements.name.value.trim(), phone = form.elements.phone.value.replace(/\D/g, '');
-    note.hidden = false;
-    if (!name || phone.length < 10) { note.textContent = 'Please add your name and a 10-digit phone number so we can confirm the visit.'; return; }
-    note.textContent = 'Preview build: this form is not connected yet, so nothing was sent. To book now, call ' + PHONE + '.';
-  });
-
-  /* Dispatch terminal: scripted booking flow, to be wired to the live dispatcher */
-  var chat = document.getElementById('chat'), log = document.getElementById('log'), fab = document.getElementById('fab');
-  var cform = document.getElementById('chatForm'), cin = document.getElementById('chatInput');
-  var step = 0, data = {}, started = false, lastOpener = null;
-  var APPL = ['Refrigerator', 'Freezer', 'Washer', 'Dryer', 'Dishwasher', 'Oven / stove', 'Microwave', 'Other'];
-  var SLOTS = ['9 AM to 12 PM', '12 PM to 3 PM', '3 PM to 6 PM'];
-
-  function add(text, cls) {
-    var d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text;
-    log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
-  }
-  function options(list) {
-    var box = document.createElement('div'); box.className = 'opts';
-    list.forEach(function (t) {
-      var b = document.createElement('button'); b.type = 'button'; b.textContent = t;
-      b.addEventListener('click', function () { box.remove(); answer(t); });
-      box.appendChild(b);
-    });
-    log.appendChild(box); log.scrollTop = log.scrollHeight;
-  }
-  function ask() {
-    if (step === 0) { add('DISPATCH TERMINAL ONLINE.\nWhich appliance needs repair?', 'bot'); options(APPL); }
-    if (step === 1) add('What is it doing wrong? One sentence is enough.', 'bot');
-    if (step === 2) add('What ZIP code is the appliance in?', 'bot');
-    if (step === 3) { add('Pick an arrival window.', 'bot'); options(SLOTS); }
-    if (step === 4) add('Name for the work order?', 'bot');
-    if (step === 5) add('Best phone number to confirm the visit?', 'bot');
-    if (step === 6) {
-      add('WORK ORDER\nAppliance: ' + data.appliance + '\nProblem: ' + data.problem + '\nZIP: ' + data.zip + '\nWindow: ' + data.slot + '\nName: ' + data.name + '\nPhone: ' + data.phone, 'bot');
-      add('PREVIEW BUILD: this terminal is not connected to dispatch yet, so nothing was sent. To book now, call ' + PHONE + '.', 'bot warn');
-      options(['Start over']);
-    }
-  }
-  function answer(t) {
-    t = String(t).trim(); if (!t) return;
-    add(t, 'me');
-    if (step === 0) data.appliance = t;
-    else if (step === 1) data.problem = t;
-    else if (step === 2) { if (!/^\d{5}$/.test(t)) { add('That does not look like a 5-digit ZIP code. Try again.', 'bot'); return; } data.zip = t; }
-    else if (step === 3) data.slot = t;
-    else if (step === 4) data.name = t;
-    else if (step === 5) { if (t.replace(/\D/g, '').length < 10) { add('Please enter a 10-digit phone number.', 'bot'); return; } data.phone = t; }
-    else if (step === 6) { step = 0; data = {}; log.textContent = ''; ask(); return; }
-    step++; ask();
-  }
-  cform.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (step === 0 || step === 3 || step === 6) { cin.value = ''; return; }
-    var v = cin.value; cin.value = ''; answer(v);
-  });
-  function openChat(from) {
-    lastOpener = from || null; chat.classList.add('open'); fab.style.display = 'none';
-    if (!started) { started = true; ask(); }
-    cin.focus();
-  }
-  function closeChat() { chat.classList.remove('open'); fab.style.display = ''; if (lastOpener) lastOpener.focus(); }
-  document.querySelectorAll('[data-open-chat]').forEach(function (b) { b.addEventListener('click', function () { openChat(b); }); });
-  document.getElementById('chatClose').addEventListener('click', closeChat);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && chat.classList.contains('open')) closeChat(); });
-})();
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

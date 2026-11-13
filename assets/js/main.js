@@ -603,23 +603,6 @@
   })();
 
 
-  /* ─── 9. MD DETAILS: CLOSE ON MOBILE ─────────────────────── */
-  (function initMdDetails() {
-    var md = document.getElementById('mdDetails');
-    if (!md) return;
-    // On mobile (<= 980px), close by default
-    function applyDefault() {
-      if (window.innerWidth <= 980) {
-        md.removeAttribute('open');
-      } else {
-        md.setAttribute('open', '');
-      }
-    }
-    applyDefault();
-    window.addEventListener('resize', applyDefault);
-  })();
-
-
   /* ─── 10. DISPATCH PANEL KEYBOARD ────────────────────────── */
   (function initDispatchKeyboard() {
     var panel = document.querySelector('.dispatch-panel');
