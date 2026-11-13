@@ -2192,4 +2192,4 @@ footer.site {
 .brand .brand-logo { align-self: center; }
 
 /* Header: breathing room between phone number and Request service button */
-.head-cta { display: flex; align-items: center; gap: 22px; }
+.head-cta .head-phone { margin-right: 22px; }
