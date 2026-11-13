@@ -504,7 +504,7 @@
       chatEl.classList.add('open');
       chatEl.removeAttribute('hidden');
       chatEl.setAttribute('aria-hidden', 'false');
-      inputEl.focus();
+      try { inputEl.focus({ preventScroll: true }); } catch (e) { inputEl.focus(); }
 
       if (!booted) {
         booted = true;

@@ -65,7 +65,7 @@ button { cursor: pointer; font-family: inherit; }
   8%   { filter: brightness(.35) saturate(0); }
   16%  { filter: brightness(1.4) saturate(.3); }
   32%  { filter: brightness(1.05) saturate(.8); }
-  100% { filter: brightness(1) saturate(1); }
+  100% { filter: none; }
 }
 
 
@@ -2296,3 +2296,11 @@ footer.site {
 .card:has(.card-link) { cursor: pointer; }
 .card:has(.card-link:focus-visible) { outline: 3px solid var(--red); outline-offset: 3px; }
 .card-link:focus-visible { outline: none; }
+
+/* Chat terminal stays pinned to the screen until closed with the X.
+   (A leftover filter on <body> used to turn every fixed element into a page-anchored one.) */
+body { filter: none; }
+.chat { position: fixed; max-height: calc(100dvh - 3rem); max-width: calc(100vw - 1.5rem); }
+@media (max-width: 640px) {
+  .chat { inset: 0; width: 100%; height: 100dvh; max-height: none; max-width: none; border-radius: 0; z-index: 900; }
+}
