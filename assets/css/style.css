@@ -2245,3 +2245,10 @@ footer.site {
   .hero-cta.sign-cta { grid-template-columns: 1fr; }
   .sign-cta::before, .sign-cta::after { display: none; }
 }
+
+/* Hero: sign and its hanging buttons tilt and sway together as one unit */
+.sign-col .sign img { transform: none; animation: none; }
+.sign-col { transform: rotate(2deg); transform-origin: 50% 0; animation: sway 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .sign-col { animation: none; }
+}
