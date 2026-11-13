@@ -2114,3 +2114,45 @@ footer.site {
 .atom-nucleus { fill: var(--gold); }
 .atom-ring    { fill: none; stroke: var(--gold); stroke-width: 2; }
 .atom-dot     { fill: var(--gold); }
+
+
+/* ─── AREA PATCH: collapsed city lists, readable ZIP field ───── */
+.state-summary { min-height: 64px; }
+.state-static .state-summary { cursor: default; }
+.state-counties { font-size: .88rem; opacity: 1; }
+.state-info strong { font-size: 1.05rem; }
+.state-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--cream);
+  border: 1px solid rgba(244,231,197,.45);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+.state-toggle::after { content: " \25BE"; }
+.state-block[open] .state-toggle::after { content: " \25B4"; }
+.state-toggle .t-hide { display: none; }
+.state-block[open] .state-toggle .t-show { display: none; }
+.state-block[open] .state-toggle .t-hide { display: inline; }
+.state-summary:hover .state-toggle { background: var(--cream); color: var(--navy); }
+.state-cities { font-size: .92rem; line-height: 1.6; opacity: 1; padding: 14px 16px 16px; }
+.state-cities p { max-width: none; margin: 0; }
+.state-cities p + p { margin-top: 10px; }
+.state-cities strong { color: var(--gold); }
+.zip-row { align-items: stretch; }
+.zip-input {
+  min-width: 0;
+  background: var(--cream);
+  color: var(--navy);
+  border-color: var(--cream);
+  font-weight: 600;
+}
+.zip-input::placeholder { color: rgba(22,48,78,.6); }
+.zip-btn { flex-shrink: 0; }
+@media (max-width: 480px) {
+  .state-toggle .t-show, .state-toggle .t-hide { font-size: .78rem; }
+  .state-counties { font-size: .82rem; }
+}
