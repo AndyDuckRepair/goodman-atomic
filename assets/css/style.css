@@ -48,7 +48,7 @@ body {
   color: var(--ink);
   line-height: 1.6;
   overflow-x: hidden;
-  animation: screenPower .9s ease-out both;
+  animation: screenPower .9s ease-out backwards;
 }
 
 img, svg, video { display: block; max-width: 100%; }
