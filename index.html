@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Goodman Atomic Appliance Service | Repair in Maryland, Virginia &amp; D.C.</title>
-<meta name="description" content="Appliance repair in Maryland, Virginia and Washington D.C. Refrigerators, washers, dryers, ovens, dishwashers. Upfront estimates, 6–12 month warranty. Call (240) 744-0515.">
+<meta name="description" content="Appliance repair in Maryland, Northern Virginia and Washington D.C. Refrigerators, washers, dryers, ovens, dishwashers. Upfront estimates, 6–12 month warranty. Call (240) 744-0515.">
 <link rel="canonical" href="https://goodmanatomic.com/">
 <link rel="icon" type="image/png" href="assets/logo/logo-square.png">
 <link rel="apple-touch-icon" href="assets/logo/logo-round.png">
@@ -23,7 +23,7 @@
 <div class="strip">
   <div class="wrap">
     <span>Open every day · 8 am – 5 pm</span>
-    <span>Maryland · Virginia · Washington, D.C.</span>
+    <span>Maryland · Northern Virginia · Washington, D.C.</span>
   </div>
 </div>
 
@@ -54,9 +54,12 @@
         <div class="has-drop">
           <button class="drop-toggle" aria-expanded="false" aria-haspopup="true">Service area <span aria-hidden="true">▾</span></button>
           <div class="drop-menu" role="menu">
-            <a href="#area" role="menuitem">Maryland</a>
-            <a href="#area" role="menuitem">Virginia</a>
             <a href="#area" role="menuitem">Washington, D.C.</a>
+            <a href="#area" role="menuitem">MD — Montgomery County</a>
+            <a href="#area" role="menuitem">MD — Howard County</a>
+            <a href="#area" role="menuitem">MD — Frederick County</a>
+            <a href="#area" role="menuitem">VA — Arlington County</a>
+            <a href="#area" role="menuitem">VA — Fairfax County (east)</a>
           </div>
         </div>
       </nav>
@@ -95,10 +98,10 @@
   <div class="wrap">
     <!-- Left: copy -->
     <div class="hero-text">
-      <span class="script">Fixed right, the first visit</span>
-      <h1>Appliance repair with <span>atomic-age</span> precision</h1>
-      <p class="lead">Goodman Atomic repairs refrigerators, washers, dryers, ovens and dishwashers across Maryland, Virginia and Washington, D.C. Clear estimate before any work starts.</p>
-      <div class="hero-btns">
+      <span class="script">The future of repair is here!</span>
+      <h1>Your appliances, <em>back in working order</em></h1>
+      <p class="lead">Goodman Atomic handles appliance repair for homes and businesses across Maryland, Northern Virginia and Washington, D.C. Clear estimate before any work starts.</p>
+      <div class="hero-cta">
         <button class="btn btn-red" type="button" data-open-chat aria-haspopup="dialog">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
           Book with AI dispatcher
@@ -109,39 +112,65 @@
         </a>
       </div>
       <ul class="chips">
-        <li class="chip">Upfront estimates</li>
-        <li class="chip">6–12 month warranty</li>
-        <li class="chip">Homes &amp; businesses</li>
-        <li class="chip">Open 7 days a week</li>
-        <li class="chip">Same-day service available</li>
-        <li class="chip">Genuine OEM parts</li>
+        <li>Upfront estimates</li>
+        <li>6–12 month repair warranty</li>
+        <li>Homes and businesses</li>
+        <li>Open 7 days a week</li>
+        <li>Same-day service available</li>
+        <li>Genuine OEM parts</li>
       </ul>
     </div>
 
-    <!-- Right: sign + terminal -->
+    <!-- Right: sign + dispatch panel -->
     <div class="sign-col">
-      <span class="burst b1" aria-hidden="true">✦</span>
-      <span class="burst b2" aria-hidden="true">✦</span>
-      <span class="burst b3" aria-hidden="true">✦</span>
-      <div class="sign">
-        <img src="assets/goodman-atomic-sign.webp" width="1080" height="720"
-          alt="Goodman Atomic Appliance Service — retro sign with repair mascot"
-          loading="eager">
-      </div>
-      <!-- Mini CRT dispatch terminal -->
-      <div class="hero-term" data-open-chat
-        role="button" tabindex="0"
-        aria-label="Open dispatch terminal — book a repair">
-        <div class="ht-bezel">
-          <div class="ht-screen">
-            <div class="ht-screen-inner">
-              <div class="ht-crt" id="htCrt" aria-hidden="true"></div>
+      <svg class="burst b1" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
+      <svg class="burst b2" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
+      <svg class="burst b3" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M20 0l3 16 17 4-17 4-3 16-3-16L0 20l17-4z"/></svg>
+      <div class="sign-sway-wrap">
+        <div class="sign">
+          <img src="assets/goodman-atomic-sign.webp" width="1080" height="720"
+            alt="Goodman Atomic Appliance Service — retro sign with repair mascot"
+            loading="eager">
+        </div>
+        <!-- Dispatch panel -->
+        <div class="dispatch-panel" data-open-chat
+             role="button" tabindex="0"
+             aria-label="Open dispatch terminal — book a repair">
+          <span class="dp-bracket dp-bracket-l" aria-hidden="true"></span>
+          <span class="dp-bracket dp-bracket-r" aria-hidden="true"></span>
+          <div class="dp-screen-wrap" aria-hidden="true">
+            <div class="dp-screen">
+              <div class="dp-screen-inner">
+                <div class="dp-crt" id="dpCrt"></div>
+              </div>
             </div>
           </div>
-          <div class="ht-controls">
-            <span class="ht-knob"></span>
-            <span class="ht-knob"></span>
-            <span class="ht-led"></span>
+          <div class="dp-ctrl" aria-hidden="true">
+            <div class="dp-nameplate">ATOMIC<br>DISPATCH</div>
+            <div class="dp-switches">
+              <div class="dp-switch dp-sw-off">
+                <div class="dp-sw-ring"></div>
+                <div class="dp-sw-base"><div class="dp-sw-knob"></div></div>
+              </div>
+              <div class="dp-switch dp-sw-on">
+                <div class="dp-sw-ring"></div>
+                <div class="dp-sw-base"><div class="dp-sw-knob"></div></div>
+              </div>
+            </div>
+            <div class="dp-lamps">
+              <div class="dp-lamp-grp">
+                <div class="dp-lamp-bezel"><div class="dp-lamp dp-lamp-pwr"></div></div>
+                <span class="dp-lamp-lbl">PWR</span>
+              </div>
+              <div class="dp-lamp-grp">
+                <div class="dp-lamp-bezel"><div class="dp-lamp dp-lamp-line"></div></div>
+                <span class="dp-lamp-lbl">LINE</span>
+              </div>
+              <div class="dp-lamp-grp">
+                <div class="dp-lamp-bezel"><div class="dp-lamp dp-lamp-busy"></div></div>
+                <span class="dp-lamp-lbl">BUSY</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -216,14 +245,14 @@
 <!-- ═══ HOW IT WORKS ═══ -->
 <section class="band-navy" id="how">
   <div class="wrap">
-    <div class="sec-head" data-rise>
+    <div class="sec-head sec-head-left" data-rise>
       <span class="script">How a repair goes</span>
       <h2>Three steps from broken to running</h2>
     </div>
     <ol class="steps">
       <li class="step" data-rise>
         <h3>Tell us what broke</h3>
-        <p>Book in the chat terminal, call, or fill the form below. Pick the arrival window that works for you.</p>
+        <p>Book in the chat terminal, call, or fill the form. Pick the arrival window that suits you.</p>
       </li>
       <li class="step" data-rise>
         <h3>Get a clear estimate</h3>
@@ -243,7 +272,7 @@
   <div class="wrap">
     <div class="sec-head" data-rise>
       <span class="script">Brands we service</span>
-      <h2>All major brands, from Kenmore to <span style="white-space:nowrap">Sub-Zero</span></h2>
+      <h2>All major brands,<br>from Kenmore to <span style="white-space:nowrap">Sub-Zero</span></h2>
     </div>
     <ul class="brands" data-rise aria-label="Brands we service">
       <li>Bosch</li>
@@ -268,7 +297,7 @@
       <li>Wolf</li>
       <li class="brands-more">… and all other major manufacturers</li>
     </ul>
-    <p class="mt-lg" style="font-size:.88rem;opacity:.7;text-align:left">Brand names belong to their owners. Goodman Atomic is an independent service company not affiliated with any manufacturer.</p>
+    <p class="brands-fine">Brand names belong to their owners. Goodman Atomic is an independent service company not affiliated with any manufacturer.</p>
   </div>
 </section>
 
@@ -330,28 +359,68 @@
 <!-- ═══ SERVICE AREA ═══ -->
 <section class="band-navy area" id="area">
   <div class="wrap">
-    <div data-rise>
+    <div class="area-left" data-rise>
       <span class="script">Where we work</span>
       <h2>All across the DMV</h2>
-      <p>Our technicians cover the entire Maryland, Northern Virginia and Washington, D.C. metro area. Give us your ZIP code and we'll confirm the next available window.</p>
-      <div class="mt-lg">
-        <a class="btn btn-cream" href="#book">Check my area →</a>
+      <p>Our technicians cover Washington, D.C., nearby Maryland and the close-in part of Northern Virginia.</p>
+
+      <div class="states" data-rise>
+        <!-- DC -->
+        <details class="state-block">
+          <summary class="state-summary">
+            <span class="state-abbr">DC</span>
+            <span class="state-info">
+              <strong>Washington, D.C.</strong>
+            </span>
+          </summary>
+          <p class="state-cities">All neighborhoods.</p>
+        </details>
+
+        <!-- Maryland -->
+        <details class="state-block" open id="mdDetails">
+          <summary class="state-summary">
+            <span class="state-abbr">MD</span>
+            <span class="state-info">
+              <strong>Maryland</strong>
+              <span class="state-counties">Montgomery · Howard · Frederick</span>
+            </span>
+          </summary>
+          <div class="state-cities">
+            <strong>Montgomery County:</strong> Rockville, Bethesda, Gaithersburg, Silver Spring, Germantown, Potomac, Chevy Chase, North Bethesda, North Potomac, Takoma Park, Kensington, Wheaton, Olney, Aspen Hill, Montgomery Village, Clarksburg, Damascus, Poolesville, Burtonsville, Colesville, White Oak, Derwood, Darnestown, Boyds, Cabin John, Glen Echo, Garrett Park, Laytonsville, Sandy Spring, Ashton, Brookeville, Washington Grove, Barnesville, Dickerson.<br>
+            <strong>Howard County:</strong> Columbia, Ellicott City, Elkridge, North Laurel, Savage, Jessup, Fulton, Clarksville, Highland, Scaggsville, Dayton, Glenelg, Glenwood, West Friendship, Cooksville, Lisbon, Woodbine, Marriottsville.<br>
+            <strong>Frederick County:</strong> Frederick, Urbana, Ballenger Creek, Middletown, Brunswick, Thurmont, Walkersville, New Market, Mount Airy, Myersville, Emmitsburg, Woodsboro, Jefferson, Adamstown, Buckeystown, Ijamsville, Monrovia, Libertytown, Point of Rocks, Braddock Heights, Lake Linganore.
+          </div>
+        </details>
+
+        <!-- Virginia -->
+        <details class="state-block">
+          <summary class="state-summary">
+            <span class="state-abbr">VA</span>
+            <span class="state-info">
+              <strong>Northern Virginia</strong>
+              <span class="state-counties">Arlington · Fairfax (east)</span>
+            </span>
+          </summary>
+          <div class="state-cities">
+            <strong>Arlington County:</strong> Arlington, Rosslyn, Clarendon, Ballston, Crystal City, Pentagon City, Shirlington.<br>
+            <strong>Fairfax County (east):</strong> McLean, Falls Church, Fairfax, Vienna, Tysons, Annandale, Great Falls, Oakton, Merrifield, Dunn Loring.
+          </div>
+        </details>
       </div>
     </div>
-    <ul class="states" data-rise>
-      <li>
-        <span class="state-abbr">MD</span>
-        <span class="state-name">Maryland</span>
-      </li>
-      <li>
-        <span class="state-abbr">VA</span>
-        <span class="state-name">Virginia</span>
-      </li>
-      <li>
-        <span class="state-abbr">DC</span>
-        <span class="state-name">Washington, D.C.</span>
-      </li>
-    </ul>
+
+    <div class="area-right" data-rise>
+      <div class="zip-checker">
+        <h3>Check your ZIP</h3>
+        <p>Enter your ZIP code to see if we service your area.</p>
+        <div class="zip-row">
+          <label for="zipInput" class="sr-only">ZIP code</label>
+          <input id="zipInput" type="text" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="ZIP code" class="zip-input" autocomplete="postal-code">
+          <button type="button" class="btn btn-cream zip-btn" id="zipBtn">Check</button>
+        </div>
+        <p class="zip-result" id="zipResult" aria-live="polite"></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -392,10 +461,6 @@
         <label for="f-phone">Phone</label>
         <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="(xxx) xxx-xxxx">
       </div>
-      <div class="field-group full">
-        <label for="f-email">Email (optional)</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
-      </div>
       <div class="field-group">
         <label for="f-app">Appliance</label>
         <select id="f-app" name="appliance">
@@ -410,21 +475,25 @@
         </select>
       </div>
       <div class="field-group">
-        <label for="f-slot">Preferred arrival window</label>
+        <label for="f-slot">Arrival window</label>
         <select id="f-slot" name="slot">
-          <option>Morning (8 am – 12 pm)</option>
-          <option>Afternoon (12 pm – 3 pm)</option>
-          <option>Evening (3 pm – 6 pm)</option>
+          <option>9 AM – 12 PM</option>
+          <option>12 PM – 3 PM</option>
+          <option>3 PM – 6 PM</option>
         </select>
+      </div>
+      <div class="field-group full">
+        <label for="f-email">Email (optional)</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
       </div>
       <div class="field-group full">
         <label for="f-prob">What is it doing wrong?</label>
         <textarea id="f-prob" name="problem" placeholder="A brief description of the problem…"></textarea>
       </div>
       <div class="full">
-        <button class="btn btn-red" type="submit">Send request</button>
+        <button class="btn btn-red req-submit" type="submit">Send request</button>
       </div>
-      <p id="formNote" aria-live="polite"></p>
+      <p id="formNote" aria-live="polite" class="full"></p>
     </form>
   </div>
 </section>
@@ -440,7 +509,7 @@
         <a href="/" aria-label="Goodman Atomic — home">
           <img class="footer-logo" src="assets/logo/logo-round-512.webp" alt="Goodman Atomic" width="120" height="120">
         </a>
-        <p>Appliance repair for homes and businesses in Maryland, Virginia and Washington, D.C.</p>
+        <p>Appliance repair for homes and businesses in Maryland, Northern Virginia and Washington, D.C.</p>
       </div>
       <div class="foot-col">
         <h4>Contact</h4>
@@ -465,7 +534,7 @@
     </div>
     <div class="copy">
       <span>© 2026 Goodman Atomic Appliance Service. All rights reserved.</span>
-      <span>Maryland · Virginia · Washington, D.C.</span>
+      <span>Maryland · Northern Virginia · Washington, D.C.</span>
     </div>
   </div>
 </footer>

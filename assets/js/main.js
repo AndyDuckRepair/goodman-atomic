@@ -10,6 +10,35 @@
   var PHONE = '(240) 744-0515';
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+  /* ─── ZIP CODE SERVICE AREA ───────────────────────────────── */
+  /* DC prefixes 200–205; MD prefixes 206–209 are caught by range check.
+     Additional specific codes for Howard, Frederick, Arlington, Fairfax. */
+  var ZIP_SPECIFIC = new Set([
+    // Howard County, MD
+    '20701','20723','20759','20763','20777','20794',
+    '21029','21036','21042','21043','21044','21045','21046','21075',
+    '21104','21163','21723','21737','21738','21794','21797',
+    // Frederick County, MD
+    '21701','21702','21703','21704','21710','21716','21727',
+    '21754','21755','21758','21769','21770','21771','21773',
+    '21774','21777','21778','21780','21788','21793','21798',
+    // Arlington County, VA (22201–22209, 22213)
+    '22201','22202','22203','22204','22205','22206','22207',
+    '22208','22209','22213',
+    // Fairfax County (east), VA
+    '22003','22027','22030','22031','22032','22033','22041',
+    '22042','22043','22044','22046','22066','22101','22102',
+    '22124','22180','22181','22182'
+  ]);
+
+  function isInServiceArea(zip) {
+    if (!/^\d{5}$/.test(zip)) return null; // invalid
+    var prefix = parseInt(zip.slice(0, 3), 10);
+    // DC: 200–205; MD general: 206–209
+    if (prefix >= 200 && prefix <= 209) return true;
+    return ZIP_SPECIFIC.has(zip);
+  }
+
   /* ─── 1. SCROLL-RISE ANIMATIONS ──────────────────────────── */
   (function initRise() {
     var items = document.querySelectorAll('[data-rise]');
@@ -125,9 +154,9 @@
   })();
 
 
-  /* ─── 4. HERO MINI-TERMINAL TYPEWRITER ───────────────────── */
-  (function initHeroTerm() {
-    var crt = document.getElementById('htCrt');
+  /* ─── 4. DISPATCH PANEL TYPEWRITER ───────────────────────── */
+  (function initDispatchPanel() {
+    var crt = document.getElementById('dpCrt');
     if (!crt) return;
 
     var LINES = [
@@ -142,12 +171,11 @@
         return;
       }
       el.textContent += text[i];
-      setTimeout(function () { typeChar(text, el, i + 1, done); }, 32);
+      setTimeout(function () { typeChar(text, el, i + 1, done); }, 28);
     }
 
     function typeLine(lineIndex) {
       if (lineIndex >= LINES.length) {
-        // Append blinking cursor after last line
         var cursor = document.createElement('span');
         cursor.className = 'cursor';
         cursor.setAttribute('aria-hidden', 'true');
@@ -160,7 +188,7 @@
       crt.appendChild(div);
 
       typeChar(LINES[lineIndex], div, 0, function () {
-        setTimeout(function () { typeLine(lineIndex + 1); }, 120);
+        setTimeout(function () { typeLine(lineIndex + 1); }, 110);
       });
     }
 
@@ -178,7 +206,7 @@
       return;
     }
 
-    setTimeout(function () { typeLine(0); }, 1200);
+    setTimeout(function () { typeLine(0); }, 1400);
   })();
 
 
@@ -534,5 +562,74 @@
       }
     });
   }
+
+
+  /* ─── 8. ZIP CHECKER ──────────────────────────────────────── */
+  (function initZipChecker() {
+    var input  = document.getElementById('zipInput');
+    var btn    = document.getElementById('zipBtn');
+    var result = document.getElementById('zipResult');
+    if (!input || !btn || !result) return;
+
+    function check() {
+      var zip = input.value.trim();
+      if (!/^\d{5}$/.test(zip)) {
+        result.textContent = 'Enter a 5-digit ZIP code.';
+        result.innerHTML = 'Enter a 5-digit ZIP code.';
+        return;
+      }
+      var inZone = isInServiceArea(zip);
+      if (inZone) {
+        result.innerHTML =
+          'Good news, we service your area.' +
+          '<br><button class="btn btn-cream zip-book-btn" type="button" data-open-chat data-zip="' + zip + '">Book a repair</button>';
+        // Reattach chat opener for newly created button
+        var bookBtn = result.querySelector('[data-open-chat]');
+        if (bookBtn && window.openAtomicChat) {
+          bookBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.openAtomicChat(bookBtn, zip);
+          });
+        }
+      } else {
+        result.textContent = 'We may still be able to help. Call (240) 744-0515 to confirm.';
+      }
+    }
+
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); check(); }
+    });
+  })();
+
+
+  /* ─── 9. MD DETAILS: CLOSE ON MOBILE ─────────────────────── */
+  (function initMdDetails() {
+    var md = document.getElementById('mdDetails');
+    if (!md) return;
+    // On mobile (<= 980px), close by default
+    function applyDefault() {
+      if (window.innerWidth <= 980) {
+        md.removeAttribute('open');
+      } else {
+        md.setAttribute('open', '');
+      }
+    }
+    applyDefault();
+    window.addEventListener('resize', applyDefault);
+  })();
+
+
+  /* ─── 10. DISPATCH PANEL KEYBOARD ────────────────────────── */
+  (function initDispatchKeyboard() {
+    var panel = document.querySelector('.dispatch-panel');
+    if (!panel) return;
+    panel.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (window.openAtomicChat) { window.openAtomicChat(panel); }
+      }
+    });
+  })();
 
 })();
