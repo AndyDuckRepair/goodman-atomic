@@ -60,6 +60,20 @@
     update();
   })();
 
+  /* ─── 0b. "REQUEST SERVICE" LINKS: jump straight to the form ─── */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#reqForm"]');
+    if (!a) return;
+    var form = document.getElementById('reqForm');
+    if (!form) return;
+    e.preventDefault();
+    var header = document.querySelector('header.site');
+    var offset = (header ? header.getBoundingClientRect().height : 0) + 12;
+    var y = form.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    if (history.replaceState) history.replaceState(null, '', '#reqForm');
+  });
+
   /* ─── 1. SCROLL-RISE ANIMATIONS ──────────────────────────── */
   (function initRise() {
     var items = document.querySelectorAll('[data-rise]');

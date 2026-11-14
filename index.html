@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Passion+One:wght@400;700&family=VT323&family=Yellowtail&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=11140400">
+<link rel="stylesheet" href="assets/css/style.css?v=11140600">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Goodman Atomic Appliance Service","telephone":"+12407440515","email":"info@andyduckrepair.com","address":{"@type":"PostalAddress","streetAddress":"118 Monroe St","addressLocality":"Rockville","addressRegion":"MD","postalCode":"20850","addressCountry":"US"},"areaServed":["Maryland","Virginia","Washington DC"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"18:00"},"priceRange":"$$"}
 </script>
@@ -68,7 +68,7 @@
       </nav>
       <div class="head-cta">
         <a class="head-phone" href="tel:+12407440515">(240) 744-0515</a>
-        <a class="btn btn-red" href="#book">Request service</a>
+        <a class="btn btn-red" href="#reqForm">Request service</a>
       </div>
     </div>
   </div>
@@ -322,7 +322,7 @@
     </div>
     <div class="dispatch-form-cta" data-rise>
       <span>Prefer a form? Leave your details and we'll call you back.</span>
-      <a class="btn btn-red" href="#book">
+      <a class="btn btn-red" href="#reqForm">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6v3H9z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M8 12h8M8 16h5"/></svg>
         Request service
       </a>
@@ -409,24 +409,10 @@
       <span class="script">Get in touch</span>
       <h2>Request service</h2>
       <p>Call, email, or fill the form. We'll confirm your slot and give you a time window the same day.</p>
-      <ul style="list-style:none;padding:0;margin-top:1.6rem;display:grid;gap:.85rem;font-size:1rem">
-        <li>
-          <strong>Phone</strong><br>
-          <a href="tel:+12407440515" class="tel-link">(240) 744-0515</a>
-        </li>
-        <li>
-          <strong>Email</strong><br>
-          <a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a>
-        </li>
-        <li>
-          <strong>Hours</strong><br>
-          Monday – Sunday, 8:00 am – 6:00 pm
-        </li>
-        <li>
-          <strong>Office</strong><br>
-          118 Monroe St, Rockville, MD 20850
-        </li>
-      </ul>
+      <p class="book-phone">
+        <strong>Phone</strong><br>
+        <a href="tel:+12407440515" class="tel-link">(240) 744-0515</a>
+      </p>
     </div>
 
     <form class="req" id="reqForm" novalidate data-rise>
@@ -482,6 +468,21 @@
       </div>
       <p id="formNote" aria-live="polite" class="full"></p>
     </form>
+
+    <ul class="book-more" data-rise>
+      <li>
+        <strong>Email</strong><br>
+        <a href="mailto:info@andyduckrepair.com">info@andyduckrepair.com</a>
+      </li>
+      <li>
+        <strong>Hours</strong><br>
+        Monday – Sunday, 8:00 am – 6:00 pm
+      </li>
+      <li>
+        <strong>Office</strong><br>
+        118 Monroe St, Rockville, MD 20850
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -539,7 +540,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M7 9l3 2-3 2M13 13h4"/></svg>
     Chat
   </button>
-  <a class="btn btn-gold bar-request" href="#book">
+  <a class="btn btn-gold bar-request" href="#reqForm">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6v3H9z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M8 12h8M8 16h5"/></svg>
     Request
   </a>
@@ -562,6 +563,6 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=11140055"></script>
+<script src="assets/js/main.js?v=11140610"></script>
 </body>
 </html>

@@ -2422,3 +2422,17 @@ header.site.stuck::before {
   .bar .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
   .dispatch-form-cta .btn { width: 100%; justify-content: center; }
 }
+
+/* Booking: phone, then the form, then the rest (mobile order).
+   Desktop: info + extra details on the left, form on the right. */
+.book .wrap { grid-template-areas: "info form" "more form"; grid-template-rows: auto 1fr; row-gap: 1.6rem; }
+.book .book-info { grid-area: info; }
+.book form.req { grid-area: form; }
+.book .book-more { grid-area: more; list-style: none; padding: 0; margin: 0; display: grid; gap: .85rem; font-size: 1rem; }
+.book-phone { margin-top: 1.4rem; font-size: 1rem; }
+@media (max-width: 980px) {
+  .book .wrap { grid-template-areas: "info" "form" "more"; grid-template-rows: auto; }
+}
+
+/* Landing on the form via #reqForm: keep it clear of the sticky header */
+#reqForm { scroll-margin-top: 90px; }
