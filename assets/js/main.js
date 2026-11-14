@@ -303,8 +303,9 @@
     ];
 
     var SLOTS = [
-      'Morning (8am–12pm)',
-      'Afternoon (12pm–5pm)'
+      '9am–12pm',
+      '12pm–3pm',
+      '3pm–6pm'
     ];
 
     function getSid() {
