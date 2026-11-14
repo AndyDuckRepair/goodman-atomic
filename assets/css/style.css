@@ -2362,3 +2362,17 @@ body { filter: none; }
 /* Service pages: buttons sit evenly between the intro text and the chips */
 .hero-inner .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 .hero-inner .hero-btns + .chips { margin-top: 26px; }
+
+/* iOS Safari draws the page under its see-through top bar. When the header
+   is stuck to the top, paint cream above it so scrolled content doesn't show
+   through around the logo. */
+header.site.stuck::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 300px;
+  background: var(--cream);
+  pointer-events: none;
+}

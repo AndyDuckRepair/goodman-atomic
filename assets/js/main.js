@@ -45,6 +45,21 @@
     return ZIP_SPECIFIC.has(zip);
   }
 
+  /* ─── 0. STUCK HEADER (cover the area under the iOS Safari bar) ─── */
+  (function initStuckHeader() {
+    var header = document.querySelector('header.site');
+    if (!header) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      header.classList.toggle('stuck', header.getBoundingClientRect().top <= 0 && window.scrollY > 0);
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  })();
+
   /* ─── 1. SCROLL-RISE ANIMATIONS ──────────────────────────── */
   (function initRise() {
     var items = document.querySelectorAll('[data-rise]');
