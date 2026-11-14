@@ -2392,3 +2392,33 @@ header.site.stuck::before {
   .card p { font-size: .8rem; line-height: 1.4; margin-bottom: .6rem; }
   .card-link { font-size: .72rem; letter-spacing: .04em; }
 }
+
+/* Gold button (mobile quick bar "Request") */
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+  box-shadow: 0 4px 0 #b8892f, 0 6px 14px rgba(255,210,122,.3);
+}
+.btn-gold:hover { background: #ffdc94; }
+.btn-gold:active { box-shadow: 0 2px 0 #b8892f; }
+
+/* Form CTA under the chat / voice panels */
+.dispatch-form-cta {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem 1.4rem;
+  text-align: center;
+}
+.dispatch-form-cta span { font-weight: 600; color: var(--navy); }
+
+/* Mobile quick bar: three buttons */
+@media (max-width: 640px) {
+  .bar { gap: .4rem; padding: .5rem .5rem; }
+  .bar .btn { padding: .55rem .3rem; font-size: .85rem; gap: .3rem; letter-spacing: .03em; white-space: nowrap; }
+  .bar .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .dispatch-form-cta .btn { width: 100%; justify-content: center; }
+}
