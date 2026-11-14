@@ -304,7 +304,11 @@
 
     var SLOTS = [
       '9am–12pm',
+      '10am–1pm',
+      '11am–2pm',
       '12pm–3pm',
+      '1pm–4pm',
+      '2pm–5pm',
       '3pm–6pm'
     ];
 
