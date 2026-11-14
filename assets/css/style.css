@@ -2436,3 +2436,19 @@ header.site.stuck::before {
 
 /* Landing on the form via #reqForm: keep it clear of the sticky header */
 #reqForm { scroll-margin-top: 90px; }
+
+/* Warranty badge image */
+.seal-img img {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+}
+.warranty .wrap { grid-template-columns: 240px 1fr; }
+@media (max-width: 980px) {
+  .warranty .wrap { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+  .seal-img img { width: 200px; }
+}
