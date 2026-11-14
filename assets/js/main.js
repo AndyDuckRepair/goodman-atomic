@@ -8,6 +8,11 @@
 
   /* ─── GLOBALS ─────────────────────────────────────────────── */
   var PHONE = '(240) 744-0515';
+
+  /* AI dispatcher (Cloudflare Worker). Empty = chat works as a form and asks to call. */
+  var DISPATCH_API = 'https://goodman-dispatcher.goodmanatomic.workers.dev';
+  /* Cloudflare Turnstile site key. Empty = no security check. */
+  var TURNSTILE_SITEKEY = '';
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ─── ZIP CODE SERVICE AREA ───────────────────────────────── */
@@ -34,8 +39,9 @@
   function isInServiceArea(zip) {
     if (!/^\d{5}$/.test(zip)) return null; // invalid
     var prefix = parseInt(zip.slice(0, 3), 10);
-    // DC: 200–205; MD general: 206–209
-    if (prefix >= 200 && prefix <= 209) return true;
+    // DC: 200, 202–205; MD (Montgomery, Prince George's): 207–209.
+    // 201 = outer Northern Virginia, 206 = Southern Maryland: not covered by default.
+    if (prefix === 200 || (prefix >= 202 && prefix <= 205) || (prefix >= 207 && prefix <= 209)) return true;
     return ZIP_SPECIFIC.has(zip);
   }
 
@@ -253,6 +259,9 @@
 
 
   /* ─── 6. CHAT TERMINAL ────────────────────────────────────── */
+  /* AI mode: talks to the dispatcher Worker (DISPATCH_API).
+     Form mode: scripted questions, submitted to DISPATCH_API/lead.
+     If the AI is unreachable, the chat switches to form mode. */
   (function initChat() {
     var chatEl    = document.getElementById('chat');
     var logEl     = document.getElementById('chatLog');
@@ -261,15 +270,22 @@
     var closeBtn  = document.getElementById('chatClose');
     if (!chatEl || !logEl || !inputEl) return;
 
+    var mode      = DISPATCH_API ? 'ai' : 'form';
     var step      = 0;
     var data      = {};
+    var history   = [];
     var booted    = false;
     var typing    = false;
+    var busy      = false;
     var lastOpener = null;
+    var sid       = getSid();
+    var tsToken   = null;
+    var tsWidget  = null;
+    var tsLoaded  = false;
 
     var BOOT = [
       'GOODMAN ATOMIC DISPATCH v2.6',
-      'FIELD ROUTER: INITIALIZING\u2026',
+      'FIELD ROUTER: INITIALIZING…',
       'SCHEDULER: ONLINE',
       'SYSTEM READY.',
       ''
@@ -288,9 +304,19 @@
 
     var SLOTS = [
       'Morning (8am–12pm)',
-      'Afternoon (12pm–5pm)',
-      'Evening (5pm–8pm)'
+      'Afternoon (12pm–5pm)'
     ];
+
+    function getSid() {
+      var s;
+      try { s = sessionStorage.getItem('ga_sid'); } catch (e) {}
+      if (!s) {
+        s = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+        try { sessionStorage.setItem('ga_sid', s); } catch (e) {}
+      }
+      return s;
+    }
 
     /* Create a message element */
     function el(cls) {
@@ -309,7 +335,7 @@
     }
 
     /* Typewriter message */
-    function type(text, cls, done) {
+    function type(text, cls, done, speed) {
       typing = true;
       var m = el(cls || 'bot');
       m.textContent = '';
@@ -335,7 +361,11 @@
         m.textContent += text[i];
         i++;
         logEl.scrollTop = logEl.scrollHeight;
-      }, 20);
+      }, speed || 20);
+    }
+
+    function clearOpts() {
+      logEl.querySelectorAll('.chat-opts').forEach(function (r) { r.remove(); });
     }
 
     /* Render option buttons */
@@ -345,10 +375,11 @@
       list.forEach(function (item) {
         var b = document.createElement('button');
         b.className = 'chat-opt';
+        b.type = 'button';
         b.textContent = item;
         b.addEventListener('click', function () {
-          row.remove();
-          answer(item);
+          if (typing || busy) return;
+          route(item);
         });
         row.appendChild(b);
       });
@@ -356,7 +387,111 @@
       logEl.scrollTop = logEl.scrollHeight;
     }
 
-    /* Ask current step */
+    /* Every customer message goes through here */
+    function route(val) {
+      val = String(val).trim();
+      if (!val) return;
+      clearOpts();
+      if (mode === 'ai') {
+        line(val, 'me');
+        aiSend(val);
+      } else {
+        answer(val);
+      }
+    }
+
+    /* ── AI mode ── */
+    function aiStart() {
+      type('What appliance needs service? Pick one or describe the problem.', 'bot', function () { opts(APPL); });
+    }
+
+    function aiSend(text) {
+      history.push({ role: 'user', content: text });
+      busy = true;
+      var wait = line('…', 'bot');
+      var body = { sessionId: sid, messages: history.slice(-40) };
+      if (tsToken) body.turnstileToken = tsToken;
+
+      fetch(DISPATCH_API + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; })
+            .then(function (d) { return { status: r.status, data: d }; });
+        })
+        .then(function (res) {
+          wait.remove();
+          if (res.status === 200 && res.data.reply) {
+            history.push({ role: 'assistant', content: res.data.reply });
+            type(res.data.reply, 'bot', function () {
+              busy = false;
+              if (res.data.options && res.data.options.length) opts(res.data.options);
+            }, 8);
+          } else if (res.status === 429) {
+            history.pop();
+            busy = false;
+            line('Too many messages. Wait a minute and try again, or call ' + PHONE + '.', 'warn');
+          } else if (res.status === 403 && res.data.error === 'turnstile') {
+            history.pop();
+            busy = false;
+            resetTurnstile();
+            line('Please complete the security check, then send again.', 'warn');
+          } else {
+            throw new Error('dispatch ' + res.status);
+          }
+        })
+        .catch(function () {
+          if (wait.parentNode) wait.remove();
+          history.pop();
+          busy = false;
+          switchToForm(text);
+        });
+    }
+
+    function switchToForm(firstText) {
+      mode = 'form';
+      data = {};
+      line('Live dispatcher offline. Switching to the quick booking form.', 'warn');
+      /* If this was the customer's first message, it answers "which appliance". */
+      if (!history.length && firstText) {
+        data.appliance = firstText;
+        step = 1;
+      } else {
+        step = 0;
+      }
+      ask();
+    }
+
+    /* ── Turnstile (only when TURNSTILE_SITEKEY is set) ── */
+    function initTurnstile() {
+      if (!TURNSTILE_SITEKEY || tsLoaded || mode !== 'ai') return;
+      tsLoaded = true;
+      window.gaTurnstileReady = function () {
+        var box = document.createElement('div');
+        box.className = 'chat-ts';
+        logEl.appendChild(box);
+        tsWidget = window.turnstile.render(box, {
+          sitekey: TURNSTILE_SITEKEY,
+          theme: 'dark',
+          appearance: 'interaction-only',
+          callback: function (t) { tsToken = t; },
+          'expired-callback': function () { tsToken = null; }
+        });
+      };
+      var s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=gaTurnstileReady&render=explicit';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
+    function resetTurnstile() {
+      tsToken = null;
+      if (window.turnstile && tsWidget !== null) window.turnstile.reset(tsWidget);
+    }
+
+    /* ── Form mode ── */
     function ask() {
       switch (step) {
         case 0:
@@ -387,14 +522,54 @@
             '  Phone     : ' + data.phone + '\n' +
             '  Time      : ' + data.slot;
           line(summary, 'bot');
-          type('Confirm? Type YES to submit or NO to restart.', 'bot');
+          type('Confirm? Type YES to submit or NO to restart.', 'bot', function () { opts(['YES', 'NO']); });
           break;
         default:
           break;
       }
     }
 
-    /* Process user answer */
+    function submitForm() {
+      var fail = function () {
+        busy = false;
+        type('Could not send your request. Please call ' + PHONE + ' and we\'ll book you right away.', 'bot');
+        step = 99;
+      };
+      if (!DISPATCH_API) { fail(); return; }
+      busy = true;
+      var wait = line('SENDING…', 'bot');
+      fetch(DISPATCH_API + '/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: sid,
+          turnstileToken: tsToken || undefined,
+          booking: {
+            appliance: data.appliance,
+            issue: data.issue,
+            zip: data.zip,
+            name: data.name,
+            phone: data.phone,
+            preferred_window: data.slot
+          }
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          wait.remove();
+          if (!d || !d.ok) throw new Error('lead');
+          busy = false;
+          step = 99;
+          type('Request ' + d.ref + ' received. A dispatcher will call ' + data.name +
+            ' at ' + data.phone + ' to confirm. — GOODMAN ATOMIC', 'bot');
+        })
+        .catch(function () {
+          if (wait.parentNode) wait.remove();
+          fail();
+        });
+    }
+
+    /* Process user answer (form mode) */
     function answer(t) {
       var val = t.trim();
       line(val, 'me');
@@ -430,6 +605,7 @@
           break;
         case 4:
           var digits = val.replace(/\D/g, '');
+          if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
           if (digits.length !== 10) {
             line('Please enter a valid 10-digit phone number.', 'warn');
             return;
@@ -445,9 +621,7 @@
           break;
         case 6:
           if (val.toUpperCase() === 'YES') {
-            type('Request submitted! We\'ll call ' + data.name +
-              ' at ' + data.phone + ' to confirm. — GOODMAN ATOMIC', 'bot');
-            step = 99;
+            submitForm();
           } else if (val.toUpperCase() === 'NO') {
             step = 0;
             data = {};
@@ -483,11 +657,11 @@
 
     /* Handle send */
     function handleSend() {
-      if (typing) return;
+      if (typing || busy) return;
       var val = inputEl.value.trim();
       if (!val) return;
       inputEl.value = '';
-      answer(val);
+      route(val);
     }
 
     if (sendBtn) {
@@ -508,8 +682,9 @@
 
       if (!booted) {
         booted = true;
+        initTurnstile();
         runBoot(function () {
-          ask();
+          if (mode === 'ai') aiStart(); else ask();
         });
       }
     }
