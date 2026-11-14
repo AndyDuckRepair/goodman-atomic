@@ -947,7 +947,7 @@ section { padding-block: 68px; }
 /* ─── 12. SERVICE CARDS ──────────────────────────────────────── */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   grid-auto-rows: 1fr;
 }
@@ -2375,4 +2375,20 @@ header.site.stuck::before {
   height: 300px;
   background: var(--cream);
   pointer-events: none;
+}
+
+/* Four cards per row on desktop: smaller card titles so long names fit */
+@media (min-width: 981px) {
+  .cards .card h3 { font-size: clamp(1.1rem, 1.45vw, 1.45rem); overflow-wrap: break-word; hyphens: auto; }
+}
+
+/* Phones: service cards two per row, compact */
+@media (max-width: 640px) {
+  .cards { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+  .card { padding: 1rem .85rem 1rem; border-radius: 12px; }
+  .card::before { width: 20px; height: 20px; }
+  .card .ico.ico-img { width: 64px; height: 64px; margin-bottom: .6rem; }
+  .cards .card h3 { font-size: clamp(.9rem, 4.3vw, 1.05rem); line-height: 1.1; margin-bottom: .35rem; hyphens: auto; overflow-wrap: break-word; }
+  .card p { font-size: .8rem; line-height: 1.4; margin-bottom: .6rem; }
+  .card-link { font-size: .72rem; letter-spacing: .04em; }
 }

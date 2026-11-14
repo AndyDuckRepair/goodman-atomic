@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Passion+One:wght@400;700&family=VT323&family=Yellowtail&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=11140035">
+<link rel="stylesheet" href="assets/css/style.css?v=11140300">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Goodman Atomic Appliance Service","telephone":"+12407440515","email":"info@andyduckrepair.com","address":{"@type":"PostalAddress","streetAddress":"118 Monroe St","addressLocality":"Rockville","addressRegion":"MD","postalCode":"20850","addressCountry":"US"},"areaServed":["Maryland","Virginia","Washington DC"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"18:00"},"priceRange":"$$"}
 </script>
@@ -48,6 +48,8 @@
             <a href="services/dishwasher-repair.html" role="menuitem">Dishwasher Repair</a>
             <a href="services/oven-stove-repair.html" role="menuitem">Oven &amp; Stove Repair</a>
             <a href="services/microwave-repair.html" role="menuitem">Microwave Repair</a>
+            <a href="services/ice-maker-repair.html" role="menuitem">Ice Maker Repair</a>
+            <a href="services/range-hood-repair.html" role="menuitem">Range Hood Repair</a>
           </div>
         </div>
         <a href="#brands">Brands</a>
@@ -186,6 +188,20 @@
         <h3>Microwaves</h3>
         <p>Runs but does not heat, sparks, or a turntable that stopped.</p>
         <a class="card-link" href="services/microwave-repair.html">Learn more →</a>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico ico-img"><img src="assets/icons/ice-maker.webp" alt="" width="96" height="96" loading="lazy"></div>
+        <h3>Ice makers</h3>
+        <p>No ice, small or hollow cubes, leaks, a jammed dispenser.</p>
+        <a class="card-link" href="services/ice-maker-repair.html">Learn more →</a>
+      </article>
+
+      <article class="card" data-rise>
+        <div class="ico ico-img"><img src="assets/icons/range-hood.webp" alt="" width="96" height="96" loading="lazy"></div>
+        <h3>Range hoods</h3>
+        <p>Fan won't run, weak suction, loud noise, lights out.</p>
+        <a class="card-link" href="services/range-hood-repair.html">Learn more →</a>
       </article>
 
     </div>
@@ -425,20 +441,30 @@
           <option>Dishwasher</option>
           <option>Oven or stove</option>
           <option>Microwave</option>
+          <option>Ice maker</option>
+          <option>Range hood</option>
           <option>Other</option>
         </select>
       </div>
       <div class="field-group">
         <label for="f-slot">Arrival window</label>
         <select id="f-slot" name="slot">
-          <option>9 AM – 12 PM</option>
-          <option>12 PM – 3 PM</option>
-          <option>3 PM – 6 PM</option>
+          <option>9 am – 12 pm</option>
+          <option>10 am – 1 pm</option>
+          <option>11 am – 2 pm</option>
+          <option>12 pm – 3 pm</option>
+          <option>1 pm – 4 pm</option>
+          <option>2 pm – 5 pm</option>
+          <option>3 pm – 6 pm</option>
         </select>
       </div>
-      <div class="field-group full">
+      <div class="field-group">
         <label for="f-email">Email (optional)</label>
         <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="field-group">
+        <label for="f-zip">ZIP code</label>
+        <input id="f-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="20850" required>
       </div>
       <div class="field-group full">
         <label for="f-prob">What is it doing wrong?</label>
@@ -483,6 +509,8 @@
           <a href="services/dishwasher-repair.html">Dishwasher Repair</a>
           <a href="services/oven-stove-repair.html">Oven &amp; Stove Repair</a>
           <a href="services/microwave-repair.html">Microwave Repair</a>
+          <a href="services/ice-maker-repair.html">Ice Maker Repair</a>
+          <a href="services/range-hood-repair.html">Range Hood Repair</a>
         </nav>
       </div>
     </div>
@@ -523,6 +551,6 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=11140035"></script>
+<script src="assets/js/main.js?v=11140055"></script>
 </body>
 </html>

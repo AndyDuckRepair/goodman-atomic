@@ -265,11 +265,63 @@
         return;
       }
 
-      showNote('Got it, ' + name + '! We\'ll contact you at ' +
-        phoneEl.value.trim() + ' to confirm your appointment.', false);
+      var zipEl = form.querySelector('[name="zip"]');
+      var zip = zipEl ? zipEl.value.trim() : '';
+      if (zipEl && !/^\d{5}$/.test(zip)) {
+        showNote('Please enter a valid 5-digit ZIP code.', true);
+        zipEl.focus();
+        return;
+      }
 
-      form.reset();
+      var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+      var problem = val('problem');
+      var email = val('email');
+      var btn = form.querySelector('[type="submit"]');
+      var fail = function () {
+        if (btn) btn.disabled = false;
+        showNote('Could not send your request. Please call ' + PHONE + ' and we\'ll book you right away.', true);
+      };
+      if (!DISPATCH_API) { fail(); return; }
+
+      if (btn) btn.disabled = true;
+      showNote('Sending\u2026', false);
+      fetch(DISPATCH_API + '/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: formSid(),
+          booking: {
+            name: name,
+            phone: phoneEl.value.trim(),
+            email: email || undefined,
+            appliance: val('appliance') || 'Appliance',
+            preferred_window: val('slot') || 'Any',
+            zip: zip,
+            issue: problem.length >= 3 ? problem : 'Not described (web form)'
+          }
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !d.ok) throw new Error('lead');
+          if (btn) btn.disabled = false;
+          showNote('Got it, ' + name + '! Request ' + d.ref + ' received. We\'ll contact you at ' +
+            phoneEl.value.trim() + ' to confirm your appointment.', false);
+          form.reset();
+        })
+        .catch(fail);
     });
+
+    function formSid() {
+      var s;
+      try { s = sessionStorage.getItem('ga_sid'); } catch (e) {}
+      if (!s) {
+        s = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+        try { sessionStorage.setItem('ga_sid', s); } catch (e) {}
+      }
+      return s;
+    }
   })();
 
 
@@ -314,6 +366,8 @@
       'Oven / Range',
       'Microwave',
       'Freezer',
+      'Ice maker',
+      'Range hood',
       'Other'
     ];
 

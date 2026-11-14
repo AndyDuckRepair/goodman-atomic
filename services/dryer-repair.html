@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Passion+One:wght@400;700&family=VT323&family=Yellowtail&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css?v=11140035">
+<link rel="stylesheet" href="../assets/css/style.css?v=11140300">
 <script type="application/ld+json">
 [
   {
@@ -90,6 +90,8 @@
             <a href="dishwasher-repair.html" role="menuitem">Dishwasher Repair</a>
             <a href="oven-stove-repair.html" role="menuitem">Oven &amp; Stove Repair</a>
             <a href="microwave-repair.html" role="menuitem">Microwave Repair</a>
+            <a href="ice-maker-repair.html" role="menuitem">Ice Maker Repair</a>
+            <a href="range-hood-repair.html" role="menuitem">Range Hood Repair</a>
           </div>
         </div>
         <a href="../index.html#brands">Brands</a>
@@ -295,9 +297,13 @@
         <label for="f-phone">Phone number</label>
         <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(301) 555-0100" required>
       </div>
-      <div class="field-group full">
+      <div class="field-group">
         <label for="f-email">Email (optional)</label>
         <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="field-group">
+        <label for="f-zip">ZIP code</label>
+        <input id="f-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="20850" required>
       </div>
       <div class="field-group">
         <label for="f-app">Appliance</label>
@@ -309,15 +315,21 @@
           <option>Dishwasher</option>
           <option>Oven or stove</option>
           <option>Microwave</option>
+          <option>Ice maker</option>
+          <option>Range hood</option>
           <option>Other</option>
         </select>
       </div>
       <div class="field-group">
         <label for="f-slot">Preferred arrival window</label>
         <select id="f-slot" name="slot">
-          <option>Morning (8 am – 12 pm)</option>
-          <option>Afternoon (12 pm – 3 pm)</option>
-          <option>Evening (3 pm – 6 pm)</option>
+          <option>9 am – 12 pm</option>
+          <option>10 am – 1 pm</option>
+          <option>11 am – 2 pm</option>
+          <option>12 pm – 3 pm</option>
+          <option>1 pm – 4 pm</option>
+          <option>2 pm – 5 pm</option>
+          <option>3 pm – 6 pm</option>
         </select>
       </div>
       <div class="field-group full">
@@ -363,6 +375,8 @@
           <a href="dishwasher-repair.html">Dishwasher Repair</a>
           <a href="oven-stove-repair.html">Oven &amp; Stove Repair</a>
           <a href="microwave-repair.html">Microwave Repair</a>
+          <a href="ice-maker-repair.html">Ice Maker Repair</a>
+          <a href="range-hood-repair.html">Range Hood Repair</a>
         </nav>
       </div>
     </div>
@@ -403,6 +417,6 @@
   </div>
 </div>
 
-<script src="../assets/js/main.js?v=11140035"></script>
+<script src="../assets/js/main.js?v=11140055"></script>
 </body>
 </html>
