@@ -7,7 +7,7 @@
   'use strict';
 
   /* ─── GLOBALS ─────────────────────────────────────────────── */
-  var PHONE = '(240) 744-0515';
+  var PHONE = '(240) 221-7305';
 
   /* AI dispatcher (Cloudflare Worker). Empty = chat works as a form and asks to call. */
   var DISPATCH_API = 'https://goodman-dispatcher.goodmanatomic.workers.dev';
@@ -855,7 +855,7 @@
           });
         }
       } else {
-        result.textContent = 'We may still be able to help. Call (240) 744-0515 to confirm.';
+        result.textContent = 'We may still be able to help. Call (240) 221-7305 to confirm.';
       }
     }
 
