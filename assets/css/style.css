@@ -1561,6 +1561,7 @@ textarea {
   margin-top: .3rem;
 }
 #formNote.error { color: var(--red); }
+.form-consent { font-size: 12px; line-height: 1.4; opacity: .7; margin: 4px 0 0; }
 
 
 /* ─── 19. FOOTER ─────────────────────────────────────────────── */
