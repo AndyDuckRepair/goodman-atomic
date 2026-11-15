@@ -39,9 +39,9 @@
   function isInServiceArea(zip) {
     if (!/^\d{5}$/.test(zip)) return null; // invalid
     var prefix = parseInt(zip.slice(0, 3), 10);
-    // DC: 200, 202–205; MD (Montgomery, Prince George's): 207–209.
-    // 201 = outer Northern Virginia, 206 = Southern Maryland: not covered by default.
-    if (prefix === 200 || (prefix >= 202 && prefix <= 205) || (prefix >= 207 && prefix <= 209)) return true;
+    // DC: 200, 202–205; MD Montgomery: 208–209. Howard 207xx ZIPs are in ZIP_SPECIFIC.
+    // 201 = outer Northern Virginia, 206 = Southern Maryland, 207 = Prince George's: not covered.
+    if (prefix === 200 || (prefix >= 202 && prefix <= 205) || prefix === 208 || prefix === 209) return true;
     return ZIP_SPECIFIC.has(zip);
   }
 
