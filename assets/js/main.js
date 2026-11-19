@@ -34,8 +34,11 @@
     '22003','22027','22030','22031','22032','22033','22041',
     '22042','22043','22044','22046','22066','22101','22102',
     '22124','22180','22181','22182',
-    // Leesburg, VA
-    '20175','20176','20177','20178'
+    // Loudoun County, VA: Leesburg, Lansdowne, Ashburn, Broadlands, Brambleton, Sterling, Lovettsville, Hamilton, Waterford
+    '20175','20176','20177','20178','20146','20147','20148','20149',
+    '20164','20165','20166','20167','20180','20158','20197','20129',
+    // Frederick County, MD: Burkittsville
+    '21718'
   ]);
 
   function isInServiceArea(zip) {
