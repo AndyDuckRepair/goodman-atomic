@@ -13,6 +13,20 @@
   var DISPATCH_API = 'https://goodman-dispatcher.goodmanatomic.workers.dev';
   /* Cloudflare Turnstile site key. Empty = no security check. */
   var TURNSTILE_SITEKEY = '';
+  /* First-touch attribution: where the visitor came from (kept 30 days, sent with every request). */
+  var ATTR = (function () {
+    try {
+      var k = 'ga_src', saved = JSON.parse(localStorage.getItem(k) || 'null');
+      if (saved && Date.now() - saved.t < 30 * 864e5) return saved;
+      var p = new URLSearchParams(location.search), ref = document.referrer || '';
+      try { if (ref && new URL(ref).host === location.host) ref = ''; } catch (e) { ref = ''; }
+      var a = { ref: ref, utm_source: p.get('utm_source') || '', utm_medium: p.get('utm_medium') || '',
+        utm_campaign: p.get('utm_campaign') || '', gclid: (p.get('gclid') || p.get('gbraid') || p.get('wbraid')) ? '1' : '',
+        landing: location.pathname, t: Date.now() };
+      localStorage.setItem(k, JSON.stringify(a));
+      return a;
+    } catch (e) { return {}; }
+  })();
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ─── ZIP CODE SERVICE AREA ───────────────────────────────── */
@@ -309,6 +323,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           sessionId: formSid(),
+          attribution: ATTR,
           booking: {
             name: name,
             phone: phoneEl.value.trim(),
@@ -502,7 +517,7 @@
       history.push({ role: 'user', content: text });
       busy = true;
       var wait = line('…', 'bot');
-      var body = { sessionId: sid, messages: history.slice(-40) };
+      var body = { sessionId: sid, messages: history.slice(-40), attribution: ATTR };
       if (tsToken) body.turnstileToken = tsToken;
 
       fetch(DISPATCH_API + '/chat', {
@@ -636,6 +651,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           sessionId: sid,
+          attribution: ATTR,
           turnstileToken: tsToken || undefined,
           booking: {
             appliance: data.appliance,
